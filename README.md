@@ -1,16 +1,6 @@
-# hello_world
+# Nhóm 11 - INT 3020 40
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Thành viên
+- Nguyễn Trung Tú - 20021462
+- Nguyễn Đức Hoàng Long - 20021386
+- Đỗ Ngọc Anh - 20021284
