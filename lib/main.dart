@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
-// void main() {
-//   runApp(MyApp());
-// }
+import 'package:hello_world/home_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,12 +7,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('My First App'),
-        ),
-        body: Text('Hello World!'),
-      ),
+      title: 'MOMA',
+      theme: ThemeData(),
+      home: HomePage(),
     );
   }
 }
