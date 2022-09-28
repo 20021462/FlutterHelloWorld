@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'back_end/moma_user.dart';
+
 class AccountPage extends StatefulWidget {
-  const AccountPage({Key key}) : super(key: key);
+  MomaUser appUser;
+
+  AccountPage({Key key,MomaUser appUser}) : super(key: key);
 
   @override
   State<AccountPage> createState() => _AccountPageState();

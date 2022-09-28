@@ -1,9 +1,12 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
+import 'back_end/moma_user.dart';
+
 class ReportingPage extends StatefulWidget {
-  const ReportingPage({Key key}) : super(key: key);
+  MomaUser appUser;
+
+  ReportingPage({Key key,MomaUser appUser}) : super(key: key);
 
   @override
   State<ReportingPage> createState() => _ReportingPageState();

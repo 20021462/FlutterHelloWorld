@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'back_end/moma_user.dart';
+
 class PlanningPage extends StatefulWidget {
-  const PlanningPage({Key key}) : super(key: key);
+  MomaUser appUser;
+
+  PlanningPage({Key key,MomaUser appUser}) : super(key: key);
 
   @override
   State<PlanningPage> createState() => _PlanningPageState();
