@@ -22,6 +22,9 @@ dependencies:
 
   cupertino_icons: ^1.0.5
 
+  #Page indicator for introduction pages
+  smooth_page_indicator: ^1.0.0+2
+
   curved_navigation_bar: ^1.0.3
 
   #Firebase auth and Firebase core
@@ -44,6 +47,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

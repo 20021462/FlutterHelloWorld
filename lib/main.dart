@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hello_world/introduction_page/introduction_pageview.dart';
 import 'back_end/moma_user.dart';
 
 const MaterialColor primaryBlack = MaterialColor(
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: primaryBlack,
       ),
-      home: HomePage(appUser: appUser),
+      home: IntroductionPageView(),
       //home: MainScreen(appUser: appUser,),
       debugShowCheckedModeBanner: false,
       // routes: <String, WidgetBuilder>{
