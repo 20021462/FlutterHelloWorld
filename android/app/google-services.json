@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "485926816006",
-    "project_id": "moma-93a52",
-    "storage_bucket": "moma-93a52.appspot.com"
+    "project_number": "308602151339",
+    "project_id": "moma-89419",
+    "storage_bucket": "moma-89419.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:485926816006:android:1a82b706a29d997a4d7687",
+        "mobilesdk_app_id": "1:308602151339:android:16b7787252c404595672ee",
         "android_client_info": {
           "package_name": "com.example.hello_world"
         }
       },
       "oauth_client": [
         {
-          "client_id": "485926816006-b282r7ks0lbr6j0l0s8bckm0q64468sp.apps.googleusercontent.com",
+          "client_id": "308602151339-ogjfofjbc58sgi46u2cq84936u2qmdvh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC5i4xKr6IZcECRqKvyfm-2HxVhmWJsNOg"
+          "current_key": "AIzaSyBMaLW9iez5EoX6oxZIhfO5zBqGYrX5KBY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "485926816006-b282r7ks0lbr6j0l0s8bckm0q64468sp.apps.googleusercontent.com",
+              "client_id": "308602151339-ogjfofjbc58sgi46u2cq84936u2qmdvh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
