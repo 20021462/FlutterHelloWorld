@@ -17,68 +17,146 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _index = 0;
   MomaUser appUser;
-  var screens;
+
+  int currentTab = 0;
+  final PageStorageBucket bucket =PageStorageBucket();
+  Widget currentScreen;
 
   _HomePageState(this.appUser){
-    screens = [
-      TransactionPage(appUser: appUser,),
-      ReportingPage(appUser: appUser),
-      AddingPage(appUser: appUser),
-      PlanningPage(appUser: appUser),
-      AccountPage(appUser: appUser),
-    ];
+    currentScreen=TransactionPage(appUser: appUser,);
   }
 
-  final navigationKey = GlobalKey<CurvedNavigationBarState>();
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: screens[_index],
-        bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(
-            iconTheme: const IconThemeData(color: Colors.white),
-          ),
-          child: CurvedNavigationBar(
-            key: navigationKey,
-            backgroundColor: Colors.transparent,
-            color: Colors.black,
-            height: 60,
-            animationCurve: Curves.easeInOut,
-            animationDuration: const Duration(milliseconds: 500),
-            items: const [
-              Icon(
-                Icons.account_balance_wallet,
-                size: 30,
+      body: PageStorage(
+        child: currentScreen,
+        bucket: bucket,
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){
+          setState(() {
+            currentScreen=AddingPage(appUser: appUser,);
+            currentTab=2;
+          });
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked ,
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 10,
+        child: Container(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MaterialButton(
+                    minWidth: 90,
+                    onPressed: (){
+                      setState(() {
+                        currentScreen=TransactionPage(appUser: appUser,);
+                        currentTab =0;
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.account_balance_wallet,
+                          color: currentTab==0? Colors.blue:Colors.grey,
+                        ),
+                        Text(
+                          "Home",
+                          style: TextStyle(color: currentTab==0? Colors.blue: Colors.grey),
+                        )
+                      ],
+                    ),
+                  ),
+                  MaterialButton(
+                    minWidth: 90,
+                    onPressed: (){
+                      setState(() {
+                        currentScreen=ReportingPage(appUser: appUser,);
+                        currentTab =1;
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.bar_chart,
+                          color: currentTab==1? Colors.blue:Colors.grey,
+                        ),
+                        Text(
+                          "Reporting",
+                          style: TextStyle(color: currentTab==1? Colors.blue: Colors.grey),
+                        )
+                      ],
+                    ),
+                  )
+                ],
               ),
-              Icon(
-                Icons.bar_chart,
-                size: 30,
-              ),
-              Icon(
-                Icons.add,
-                size: 30,
-              ),
-              Icon(
-                Icons.savings,
-                size: 30,
-              ),
-              Icon(
-                Icons.person,
-                size: 30,
+              //Right tab button
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MaterialButton(
+                    minWidth: 90,
+                    onPressed: (){
+                      setState(() {
+                        currentScreen=PlanningPage(appUser: appUser,);
+                        currentTab =3;
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.savings,
+                          color: currentTab==3? Colors.blue:Colors.grey,
+                        ),
+                        Text(
+                          "Planning",
+                          style: TextStyle(color: currentTab==3? Colors.blue: Colors.grey),
+                        )
+                      ],
+                    ),
+                  ),
+                  MaterialButton(
+                    minWidth: 90,
+                    onPressed: (){
+                      setState(() {
+                        currentScreen=AccountPage(appUser: appUser,);
+                        currentTab =4;
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.person,
+                          color: currentTab==4? Colors.blue:Colors.grey,
+                        ),
+                        Text(
+                          "Account",
+                          style: TextStyle(color: currentTab==4? Colors.blue: Colors.grey),
+                        )
+                      ],
+                    ),
+                  )
+                ],
               )
             ],
-            onTap: _changeItem,
-            index: _index,
           ),
-        ));
-  }
-
-  void _changeItem(int value) {
-    setState(() {
-      _index = value;
-    });
+        ),
+      ),
+    );
   }
 }
