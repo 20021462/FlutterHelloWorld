@@ -1,4 +1,3 @@
-
 import 'package:hello_world/back_end/transaction.dart';
 
 import 'group_money.dart';
@@ -6,18 +5,18 @@ import 'group_money.dart';
 class MomaUser {
   String gmail;
   List<Transaction> transactions;
+  // ignore: non_constant_identifier_names
   int MAX_ID = 0;
-  int currentMoney= 0;
-  String uid="";
+  int currentMoney = 0;
+  String uid = "";
 
-  MomaUser(String gmail) {
-    this.gmail = gmail;
+  MomaUser(this.gmail) {
     transactions = <Transaction>[];
   }
 
-  void removeID(int ID) {
+  void removeID(int index) {
     for (int i = 0; i < transactions.length; i++) {
-      if (transactions[i].getID() == ID) {
+      if (transactions[i].getID() == index) {
         transactions.removeAt(i);
         //updateTransaction(transactions, uid);
         return;
@@ -25,9 +24,9 @@ class MomaUser {
     }
   }
 
-  Transaction findID(int ID){
+  Transaction findID(int index) {
     for (int i = 0; i < transactions.length; i++) {
-      if (transactions[i].getID() == ID) {
+      if (transactions[i].getID() == index) {
         return transactions[i];
       }
     }
@@ -42,7 +41,7 @@ class MomaUser {
       currentMoney -= newTransaction.getMoney();
     }
 
-    if(isTransactionEmpty()) {
+    if (isTransactionEmpty()) {
       transactions.insert(0, newTransaction);
       //updateTransaction(transactions, uid);
       return;
@@ -61,8 +60,9 @@ class MomaUser {
       return;
     }
 
-    for(int i = 0; i < length-1; i++) {
-      if(transactions[i].less(newTransaction) && newTransaction.less(transactions[i+1])) {
+    for (int i = 0; i < length - 1; i++) {
+      if (transactions[i].less(newTransaction) &&
+          newTransaction.less(transactions[i + 1])) {
         transactions.insert(i + 1, newTransaction);
         //updateTransaction(transactions, uid);
         return;
@@ -70,7 +70,7 @@ class MomaUser {
     }
   }
 
-  int getCurrentMoney(){
+  int getCurrentMoney() {
     return currentMoney;
   }
 
@@ -78,17 +78,16 @@ class MomaUser {
     return transactions.isEmpty;
   }
 
-  void showTransactions(){
+  void showTransactions() {
     //print(transactions[transactions.length-1]);
-    for (Transaction i in transactions){
+    for (Transaction i in transactions) {
       print(i);
     }
   }
 
   @override
   String toString() {
-    // TODO: implement toString
-    String res = gmail + '\n';
+    String res = '$gmail\n';
     for (int i = 0; i < transactions.length; i++) {
       res += transactions[i].toString();
     }

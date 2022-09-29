@@ -20,27 +20,27 @@ import 'back_end/moma_user.dart';
 // );
 // const int _blackPrimaryValue = 0xFF000000;
 
-void main() async{
+void main() async {
   MomaUser appUser = MomaUser("test@gmail.com");
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp(appUser: appUser,));
+  runApp(MyApp(
+    appUser: appUser,
+  ));
 }
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   MomaUser appUser;
 
-  MyApp({Key key,this.appUser}) : super(key: key);
+  MyApp({Key key, this.appUser}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MOMA',
-      theme: ThemeData(
-
-
-      ),
+      theme: ThemeData(),
       home: HomePage(appUser: appUser),
       //home: NewPage(),
       debugShowCheckedModeBanner: false,

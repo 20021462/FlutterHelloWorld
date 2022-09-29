@@ -2,68 +2,66 @@ import 'dart:core';
 import 'group_money.dart';
 
 class Transaction {
-  int ID;
-  int money;
-  DateTime time;
-  int group_money;
-  String note;
+  int _index;
+  int _money;
+  DateTime _time;
+  int _groupMoney;
+  String _note;
 
-  Transaction(int money, DateTime time, int groupMoney, String note) {
-    ID = -1;
-    this.money = money;
-    this.note = note;
-    this.time = time;
-    group_money = groupMoney;
+  Transaction(this._money, this._time, this._groupMoney, this._note) {
+    _index = -1;
   }
   int getID() {
-    return ID;
+    return _index;
   }
 
   int getMoney() {
-    return money;
+    return _money;
   }
 
   int getGroupMoney() {
-    return group_money;
+    return _groupMoney;
   }
 
   String getNote() {
-    return note;
+    return _note;
   }
 
   DateTime getTime() {
-    return time;
+    return _time;
   }
 
-  void setID(int ID) {
-    this.ID = ID;
+  void setID(int index) {
+    _index = index;
   }
 
   void setMoney(int money) {
-    this.money = money;
+    _money = money;
   }
 
   void setGroupMoney(int groupMoney) {
-    group_money = groupMoney;
+    _groupMoney = groupMoney;
   }
 
   void setNote(String note) {
-    this.note = note;
+    _note = note;
   }
 
   void setTime(DateTime time) {
-    this.time = time;
+    _time = time;
   }
 
   bool less(Transaction other) {
-    return time.isBefore(other.getTime());
+    return _time.isBefore(other.getTime());
   }
 
   @override
+  int get hashCode => super.hashCode;
+
+  @override
   bool operator ==(Object other) {
-    // TODO: implement ==
     if (other is Transaction) {
-      if(other.getMoney() == getMoney()) {
+      if (other.getMoney() == getMoney()) {
         return true;
       }
     }
@@ -72,16 +70,7 @@ class Transaction {
 
   @override
   String toString() {
-    // TODO: implement toString
-    return "["+ID.toString()
-        +","
-        + groupMoneyList[group_money].name +
-        ", " +
-        money.toString() +
-        ", " +
-        time.toString() +
-        ", " +
-        note +"]";
+    return "[$_index,${groupMoneyList[_groupMoney].name}, $_money, $_time, $_note]";
   }
 }
 

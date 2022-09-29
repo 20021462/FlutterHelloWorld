@@ -1,4 +1,3 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_world/adding_page.dart';
 import 'package:hello_world/planning_page.dart';
@@ -7,12 +6,14 @@ import 'package:hello_world/transaction_page.dart';
 import 'account_page.dart';
 import 'back_end/moma_user.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatefulWidget {
   MomaUser appUser;
 
   HomePage({Key key, this.appUser}) : super(key: key);
 
   @override
+  // ignore: no_logic_in_create_state
   State<HomePage> createState() => _HomePageState(appUser);
 }
 
@@ -20,36 +21,36 @@ class _HomePageState extends State<HomePage> {
   MomaUser appUser;
 
   int currentTab = 0;
-  final PageStorageBucket bucket =PageStorageBucket();
+  final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen;
 
-  _HomePageState(this.appUser){
-    currentScreen=TransactionPage(appUser: appUser,);
+  _HomePageState(this.appUser) {
+    currentScreen = TransactionPage(
+      appUser: appUser,
+    );
   }
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageStorage(
-        child: currentScreen,
         bucket: bucket,
+        child: currentScreen,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: (){
+        child: const Icon(Icons.add),
+        onPressed: () {
           setState(() {
-            currentScreen=AddingPage(appUser: appUser,);
-            currentTab=2;
+            currentScreen = AddingPage(appUser: appUser);
+            currentTab = 2;
           });
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked ,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 10,
-        child: Container(
+        child: SizedBox(
           height: 70,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,10 +60,10 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   MaterialButton(
                     minWidth: 90,
-                    onPressed: (){
+                    onPressed: () {
                       setState(() {
-                        currentScreen=TransactionPage(appUser: appUser,);
-                        currentTab =0;
+                        currentScreen = TransactionPage(appUser: appUser);
+                        currentTab = 0;
                       });
                     },
                     child: Column(
@@ -70,21 +71,23 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Icon(
                           Icons.account_balance_wallet,
-                          color: currentTab==0? Colors.blue:Colors.grey,
+                          color: currentTab == 0 ? Colors.blue : Colors.grey,
                         ),
                         Text(
                           "Home",
-                          style: TextStyle(color: currentTab==0? Colors.blue: Colors.grey),
-                        )
+                          style: TextStyle(
+                            color: currentTab == 0 ? Colors.blue : Colors.grey,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                   MaterialButton(
                     minWidth: 90,
-                    onPressed: (){
+                    onPressed: () {
                       setState(() {
-                        currentScreen=ReportingPage(appUser: appUser,);
-                        currentTab =1;
+                        currentScreen = ReportingPage(appUser: appUser);
+                        currentTab = 1;
                       });
                     },
                     child: Column(
@@ -92,12 +95,14 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Icon(
                           Icons.bar_chart,
-                          color: currentTab==1? Colors.blue:Colors.grey,
+                          color: currentTab == 1 ? Colors.blue : Colors.grey,
                         ),
                         Text(
                           "Reporting",
-                          style: TextStyle(color: currentTab==1? Colors.blue: Colors.grey),
-                        )
+                          style: TextStyle(
+                            color: currentTab == 1 ? Colors.blue : Colors.grey,
+                          ),
+                        ),
                       ],
                     ),
                   )
@@ -109,10 +114,10 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   MaterialButton(
                     minWidth: 90,
-                    onPressed: (){
+                    onPressed: () {
                       setState(() {
-                        currentScreen=PlanningPage(appUser: appUser,);
-                        currentTab =3;
+                        currentScreen = PlanningPage(appUser: appUser);
+                        currentTab = 3;
                       });
                     },
                     child: Column(
@@ -120,21 +125,23 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Icon(
                           Icons.savings,
-                          color: currentTab==3? Colors.blue:Colors.grey,
+                          color: currentTab == 3 ? Colors.blue : Colors.grey,
                         ),
                         Text(
                           "Planning",
-                          style: TextStyle(color: currentTab==3? Colors.blue: Colors.grey),
-                        )
+                          style: TextStyle(
+                            color: currentTab == 3 ? Colors.blue : Colors.grey,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                   MaterialButton(
                     minWidth: 90,
-                    onPressed: (){
+                    onPressed: () {
                       setState(() {
-                        currentScreen=AccountPage(appUser: appUser,);
-                        currentTab =4;
+                        currentScreen = AccountPage(appUser: appUser);
+                        currentTab = 4;
                       });
                     },
                     child: Column(
@@ -142,12 +149,14 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Icon(
                           Icons.person,
-                          color: currentTab==4? Colors.blue:Colors.grey,
+                          color: currentTab == 4 ? Colors.blue : Colors.grey,
                         ),
                         Text(
                           "Account",
-                          style: TextStyle(color: currentTab==4? Colors.blue: Colors.grey),
-                        )
+                          style: TextStyle(
+                            color: currentTab == 4 ? Colors.blue : Colors.grey,
+                          ),
+                        ),
                       ],
                     ),
                   )
