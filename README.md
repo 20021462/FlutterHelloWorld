@@ -31,7 +31,7 @@
 
 <details><summary>Tú's branch :</summary>
 <p>
-![Gif  FlutterHelloWorld-–-login_page dart-2022-09-30-13-18-39_1](https://user-images.githubusercontent.com/72114667/193205648-3ef068f8-f062-41cd-923b-a3f022c0a9c9.gif)
+![image](https://user-images.githubusercontent.com/72114667/193205648-3ef068f8-f062-41cd-923b-a3f022c0a9c9.gif)
 - Add introduction pages
 - Add login page
 - Add verify mail page
