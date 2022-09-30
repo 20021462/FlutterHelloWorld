@@ -19,6 +19,7 @@
 
 ![image](https://user-images.githubusercontent.com/72114667/191903040-e3a4bb05-5a9c-4a94-806d-df716948f216.gif)
 
+### Tuần 4 : 
 
 <details><summary>Tú's branch :</summary>
 <p>
@@ -27,3 +28,17 @@
 - WIP AddingPage, can not input user data yet
 </p>
 </details>
+
+<details><summary>Tú's branch :</summary>
+<p>
+![Gif  FlutterHelloWorld-–-login_page dart-2022-09-30-13-18-39_1](https://user-images.githubusercontent.com/72114667/193205648-3ef068f8-f062-41cd-923b-a3f022c0a9c9.gif)
+- Add introduction pages
+- Add login page
+- Add verify mail page
+- Add reset password page
+- Add sign up page
+- Add login method by Firebase_auth (by email and password)
+</p>
+</details>
+
+
