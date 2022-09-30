@@ -40,7 +40,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MOMA',
-      theme: ThemeData(),
+      theme: ThemeData(
+        fontFamily: 'Inter',
+      ),
       home: HomePage(appUser: appUser),
       //home: NewPage(),
       debugShowCheckedModeBanner: false,

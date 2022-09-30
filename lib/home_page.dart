@@ -3,6 +3,7 @@ import 'package:hello_world/adding_page.dart';
 import 'package:hello_world/planning_page.dart';
 import 'package:hello_world/reporting_page.dart';
 import 'package:hello_world/transaction_page.dart';
+import 'package:intl/intl.dart';
 import 'account_page.dart';
 import 'back_end/moma_user.dart';
 
@@ -24,6 +25,8 @@ class _HomePageState extends State<HomePage> {
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen;
 
+  final date = DateTime.now();
+
   _HomePageState(this.appUser) {
     currentScreen = TransactionPage(
       appUser: appUser,
@@ -33,6 +36,39 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        toolbarHeight: 75,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              '${DateFormat("EEEE d").format(date).toUpperCase()}\n${DateFormat.MMMM().format(date).toUpperCase()}',
+              style: const TextStyle(
+                color: Colors.black87,
+                fontSize: 15,
+              ),
+            ),
+            Row(
+              children: const [
+                Icon(
+                  Icons.account_circle_rounded,
+                  color: Colors.black87,
+                  size: 37,
+                ),
+                Text(
+                  'Name',
+                  style: TextStyle(
+                    color: Colors.black87,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
       body: PageStorage(
         bucket: bucket,
         child: currentScreen,
