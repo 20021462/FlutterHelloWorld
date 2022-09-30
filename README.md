@@ -24,19 +24,19 @@
 <details><summary>Tú's branch :</summary>
 <p>
  <img src='https://user-images.githubusercontent.com/78422523/193197409-34ce4c95-eed1-4844-a7dc-1d83544329c0.gif'></img><br/>
-- Add the new AppBar
+- Add the new AppBar <br/>
 - WIP AddingPage, can not input user data yet
 </p>
 </details>
 
-<details><summary>Tú's branch :</summary>
+<details><summary>Main branch :</summary>
 <p>
-![image](https://user-images.githubusercontent.com/72114667/193205648-3ef068f8-f062-41cd-923b-a3f022c0a9c9.gif)
-- Add introduction pages
-- Add login page
-- Add verify mail page
-- Add reset password page
-- Add sign up page
+ <img src='https://user-images.githubusercontent.com/72114667/193205648-3ef068f8-f062-41cd-923b-a3f022c0a9c9.gif'></img><br/>
+- Add introduction pages<br/>
+- Add login page<br/>
+- Add verify mail page<br/>
+- Add reset password page<br/>
+- Add sign up page<br/>
 - Add login method by Firebase_auth (by email and password)
 </p>
 </details>
