@@ -19,8 +19,11 @@
 
 ![image](https://user-images.githubusercontent.com/72114667/191903040-e3a4bb05-5a9c-4a94-806d-df716948f216.gif)
 
-####Tú's branch :
-![30 9 22 Tu update](https://user-images.githubusercontent.com/78422523/193197409-34ce4c95-eed1-4844-a7dc-1d83544329c0.gif)
 
+<details><summary>Tú's branch :</summary>
+<p>
+ <img src='https://user-images.githubusercontent.com/78422523/193197409-34ce4c95-eed1-4844-a7dc-1d83544329c0.gif'></img><br/>
 - Add the new AppBar
 - WIP AddingPage, can not input user data yet
+</p>
+</details>
