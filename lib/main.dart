@@ -20,6 +20,10 @@ const MaterialColor primaryBlack = MaterialColor(
   },
 );
 const int _blackPrimaryValue = 0xFF000000;
+const mainColor = Color(0xff7f3dff);
+final shape = RoundedRectangleBorder(
+  borderRadius: BorderRadius.circular(15),
+);
 
 void main() async{
   MomaUser appUser = MomaUser("test@gmail.com");
@@ -48,16 +52,14 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: primaryBlack,
+        primarySwatch: Colors.blue,
       ),
       home: IntroductionPageView(),
       //home: MainScreen(appUser: appUser,),
       debugShowCheckedModeBanner: false,
-      // routes: <String, WidgetBuilder>{
-      //   '/signup': (BuildContext context) => SignupPage(),
-      //   '/reset_password': (BuildContext context) => ResetPassword(),
-      //   '/main_screen': (BuildContext context) => MainScreen(appUser: appUser ,),
-      // },
+       routes: <String, WidgetBuilder>{
+         '/home_page': (BuildContext context) => HomePage(appUser: appUser ,),
+      },
     );
   }
 }

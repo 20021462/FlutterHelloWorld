@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/login_page/login_page.dart';
+import 'package:hello_world/login_page/sign_up.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../home_page.dart';
+import '../main.dart';
 
 class IntroductionPageView extends StatefulWidget {
   const IntroductionPageView({Key key}) : super(key: key);
@@ -66,10 +69,6 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
 
   @override
   Widget build(BuildContext context) {
-    final shape = RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(15),
-    );
-
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.only(bottom: 230),
@@ -124,10 +123,15 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
             SizedBox(height: 10,),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff7f3dff),
                   minimumSize: Size(380,56),
                   shape: shape,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => SignupPage()),
+                  );
+                },
                 child: Text(
                   "Sign Up",
                   style: TextStyle(
@@ -142,9 +146,9 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
                   minimumSize: Size(380,56),
                   shape: shape,
                 ),
-                onPressed: () async {
+                onPressed: () {
                   Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => HomePage()),
+                    MaterialPageRoute(builder: (context) => LoginPage()),
                   );
                 },
                 child: Text("Login",
