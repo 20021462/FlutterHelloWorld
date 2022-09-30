@@ -42,10 +42,13 @@
 </details>
 
 Một số hình ảnh:
-![image](https://user-images.githubusercontent.com/72114667/193218683-9625b7a3-17d1-4e72-9757-f1b9b812d1cc.png)
-![image](https://user-images.githubusercontent.com/72114667/193218728-7845bb7b-a4f5-410f-b4cd-a431f6b37107.png)
-![image](https://user-images.githubusercontent.com/72114667/193218775-bb471574-7233-4ddd-96df-96d45448df85.png)
-![image](https://user-images.githubusercontent.com/72114667/193218829-75f094e1-b4fc-460d-bb90-3a49112f1cdb.png)
 
-
+<table>
+<tr>
+<td><img src="https://user-images.githubusercontent.com/72114667/193218683-9625b7a3-17d1-4e72-9757-f1b9b812d1cc.png" height="300"></td>
+<td><img src="https://user-images.githubusercontent.com/72114667/193218728-7845bb7b-a4f5-410f-b4cd-a431f6b37107.png" height="300"></td>
+<td><img src="https://user-images.githubusercontent.com/72114667/193218775-bb471574-7233-4ddd-96df-96d45448df85.png" height="300"></td>
+<td><img src="https://user-images.githubusercontent.com/72114667/193218829-75f094e1-b4fc-460d-bb90-3a49112f1cdb.png" height="300"></td>
+</tr>
+</table>
 
