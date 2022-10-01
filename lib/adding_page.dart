@@ -19,12 +19,13 @@ class _AddingPageState extends State<AddingPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: MediaQuery.of(context).size.height,
       color: const Color(0xFFFFF6E6),
       child: Column(
         children: [
-          Container(
-            margin: const EdgeInsets.only(left: 20, top: 30),
-            child: SafeArea(
+          SafeArea(
+            child: Container(
+              margin: const EdgeInsets.only(left: 30, right: 30, top: 60),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -51,51 +52,164 @@ class _AddingPageState extends State<AddingPage> {
                       signed: false,
                       decimal: false,
                     ),
-                    style: const TextStyle(fontSize: 25),
+                    style: const TextStyle(fontSize: 40),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(55),
-                      color: Colors.white,
-                    ),
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 30,
-                      horizontal: 10,
-                    ),
-                    margin: const EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              decoration: const BoxDecoration(
+                borderRadius:
+                    BorderRadiusDirectional.vertical(top: Radius.circular(45)),
+                color: Colors.white,
+              ),
+              padding: const EdgeInsets.only(
+                top: 30,
+                left: 20,
+                right: 20,
+              ),
+              margin: const EdgeInsets.only(top: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    child: ListView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.all(0),
                       children: [
-                        DropdownButtonFormField(
-                          value: categoryDropDownValue,
-                          items: groupMoneyList
-                              .map((group) {
-                                return group.name;
-                              })
-                              .toList()
-                              .map((name) {
-                                return DropdownMenuItem<String>(
-                                  alignment: AlignmentDirectional.center,
-                                  value: name,
-                                  child: Text(name),
-                                );
-                              })
-                              .toList(),
-                          onChanged: (category) {
-                            setState(() {
-                              categoryDropDownValue = category;
-                            });
-                          },
+                        Column(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 20),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.black,
+                                  style: BorderStyle.solid,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(25),
+                                color: Colors.white,
+                              ),
+                              child: DropdownButtonFormField(
+                                isDense: false,
+                                alignment: Alignment.centerLeft,
+                                itemHeight: 60,
+                                decoration: const InputDecoration.collapsed(
+                                    hintText: ''),
+                                value: categoryDropDownValue,
+                                onChanged: (category) {
+                                  setState(() {
+                                    categoryDropDownValue = category;
+                                  });
+                                },
+                                items: groupMoneyList.map((group) {
+                                  return DropdownMenuItem(
+                                    alignment: AlignmentDirectional.center,
+                                    value: group.name,
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        group.icon,
+                                        const SizedBox(width: 10),
+                                        Text(group.name),
+                                      ],
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 20),
+                              padding: const EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.black,
+                                  style: BorderStyle.solid,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(25),
+                                color: Colors.white,
+                              ),
+                              height: 60,
+                              alignment: AlignmentDirectional.centerStart,
+                              child: TextFormField(
+                                decoration: const InputDecoration.collapsed(
+                                  hintText: 'Description',
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 20),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.black,
+                                  style: BorderStyle.solid,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(25),
+                                color: Colors.white,
+                              ),
+                              child: DropdownButtonFormField(
+                                isDense: false,
+                                alignment: Alignment.centerLeft,
+                                itemHeight: 60,
+                                decoration: const InputDecoration.collapsed(
+                                    hintText: ''),
+                                value: categoryDropDownValue,
+                                onChanged: (category) {
+                                  setState(() {
+                                    categoryDropDownValue = category;
+                                  });
+                                },
+                                items: groupMoneyList.map((group) {
+                                  return DropdownMenuItem(
+                                    alignment: AlignmentDirectional.center,
+                                    value: group.name,
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        group.icon,
+                                        const SizedBox(width: 10),
+                                        Text(group.name),
+                                      ],
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(height: 40),
-                        const TextField(
-                          decoration: InputDecoration(hintText: 'Description'),
-                        ),
-                        const SizedBox(height: 180),
                       ],
                     ),
-                  )
+                  ),
+                  Container(
+                    height: 50,
+                    width: double.infinity,
+                    margin: const EdgeInsets.only(bottom: 25),
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurple.shade400,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Continue',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
