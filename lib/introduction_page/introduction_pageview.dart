@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hello_world/login_page/login_page.dart';
 import 'package:hello_world/login_page/sign_up.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../home_page.dart';
 import '../main.dart';
 
 class IntroductionPageView extends StatefulWidget {
@@ -29,29 +27,30 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
     String subtitle,
   }) =>
       Container(
+        color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 40,),
+            const SizedBox(height: 40,),
             Image.asset(
               urlImage,
               fit: BoxFit.cover,
               width: 350,
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Text(
                 title,
-                style: TextStyle(
-                  fontSize: 40,
+                style: const TextStyle(
+                  fontSize: 35,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Text(
@@ -95,6 +94,7 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
         ),
       ),
       bottomSheet: Container(
+        color: Colors.white,
         padding: const EdgeInsets.symmetric(vertical: 20),
         height: 230,
         child: Column(
@@ -108,7 +108,7 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
                   activeDotScale: 2,
                   spacing: 20,
                   dotColor: Colors.grey.shade300,
-                  activeDotColor: Color(0xff7f3dff),
+                  activeDotColor: const Color(0xff7f3dff),
                   dotHeight: 8,
                   dotWidth: 8,
                 ),
@@ -120,19 +120,19 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
                         curve: Curves.easeIn),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff7f3dff),
-                  minimumSize: Size(380,56),
+                  backgroundColor: const Color(0xff7f3dff),
+                  minimumSize: const Size(380,56),
                   shape: shape,
                 ),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => SignupPage()),
+                    MaterialPageRoute(builder: (context) => const SignupPage()),
                   );
                 },
-                child: Text(
+                child: const Text(
                   "Sign Up",
                   style: TextStyle(
                     fontSize: 20,
@@ -141,9 +141,9 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
             ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Color(0xff7f3dff),
+                  foregroundColor: const Color(0xff7f3dff),
                   backgroundColor: Colors.grey.shade300,
-                  minimumSize: Size(380,56),
+                  minimumSize: const Size(380,56),
                   shape: shape,
                 ),
                 onPressed: () {
@@ -151,7 +151,7 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
                     MaterialPageRoute(builder: (context) => LoginPage()),
                   );
                 },
-                child: Text("Login",
+                child: const Text("Login",
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold

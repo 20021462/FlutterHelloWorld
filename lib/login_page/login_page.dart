@@ -10,6 +10,7 @@ import '../back_end/moma_user.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
+// ignore: must_be_immutable
 class LoginPage extends StatefulWidget {
   MomaUser appUser;
 
@@ -48,22 +49,30 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text("Login",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+          color: Colors.black,
+        ),),
+      ),
+      resizeToAvoidBottomInset: false,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Container(
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(15, 110, 0, 0),
-                    child: const Text("Login",
-                        style: TextStyle(
-                            fontSize: 40, fontWeight: FontWeight.bold
-                        )
-                    ),
-                  )
-                ],
-              ),
+            Stack(
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.fromLTRB(15, 110, 0, 0),
+                  child: const Text("Login",
+                      style: TextStyle(
+                          fontSize: 40, fontWeight: FontWeight.bold
+                      )
+                  ),
+                )
+              ],
             ),
             Container(
               padding: const EdgeInsets.only(top: 35, left: 20, right: 30),
@@ -111,46 +120,42 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20,),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff7f3dff),
-                        minimumSize: Size(380, 56),
+                        backgroundColor: const Color(0xff7f3dff),
+                        minimumSize: const Size(380, 56),
                         shape: shape,
                       ),
                       onPressed: () async {
                         _singIn();
                       },
-                      child: Text(
+                      child: const Text(
                         "Login",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),)
                   ),
-                  SizedBox(height: 25,),
-                  Container(
-                    //alignment: const Alignment(),
-                    //padding: const EdgeInsets.only(top: 15, left: 20),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => ResetPassword())
-                        );
-                      },
-                      child: const Text(
-                        'Forgot Password',
-                        style: TextStyle(
-                          color: mainColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
+                  const SizedBox(height: 25,),
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const ResetPassword())
+                      );
+                    },
+                    child: const Text(
+                      'Forgot Password',
+                      style: TextStyle(
+                        color: mainColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 25,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('Don\'t have an acoount yet? ',
+                      const Text('Don\'t have an acoount yet? ',
                         style: TextStyle(
                           color: Colors.grey,
 
@@ -159,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                         onTap: () {
                           Navigator.of(context).push(
                               MaterialPageRoute(builder: (context) =>
-                                  SignupPage())
+                                  const SignupPage())
                           );
                         },
                         child: const Text(

@@ -79,8 +79,8 @@ class MomaUser {
   }
 
   void showTransactions() {
-    //print(transactions[transactions.length-1]);
     for (Transaction i in transactions) {
+      // ignore: avoid_print
       print(i);
     }
   }

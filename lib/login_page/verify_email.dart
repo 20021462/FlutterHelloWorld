@@ -5,15 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:hello_world/home_page.dart';
 import '../back_end/moma_user.dart';
 
+// ignore: must_be_immutable
 class VerifyScreen extends StatefulWidget {
   String email;
   VerifyScreen({Key key,this.email}) : super(key: key);
 
   @override
-  _VerifyScreenState createState() => _VerifyScreenState();
+  VerifyScreenState createState() => VerifyScreenState();
 }
 
-class _VerifyScreenState extends State<VerifyScreen> {
+class VerifyScreenState extends State<VerifyScreen> {
 
   final auth = FirebaseAuth.instance;
   User user;
@@ -50,6 +51,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
     await user.reload();
     if (user.emailVerified) {
       timer.cancel();
+      // ignore: use_build_context_synchronously
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => HomePage(appUser: MomaUser(widget.email))));
       // Navigator.of(context).pushNamed('/main_screen');

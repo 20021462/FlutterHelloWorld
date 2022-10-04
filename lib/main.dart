@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_world/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'back_end/moma_user.dart';
+import 'introduction_page/introduction_pageview.dart';
 
 // const MaterialColor primaryBlack = MaterialColor(
 //   _blackPrimaryValue,
@@ -19,6 +20,11 @@ import 'back_end/moma_user.dart';
 //   },
 // );
 // const int _blackPrimaryValue = 0xFF000000;
+
+const mainColor = Color(0xff7f3dff);
+final shape = RoundedRectangleBorder(
+  borderRadius: BorderRadius.circular(15)
+);
 
 void main() async {
   MomaUser appUser = MomaUser("test@gmail.com");
@@ -43,8 +49,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Inter',
       ),
-      home: HomePage(appUser: appUser),
-      //home: NewPage(),
+      home: IntroductionPageView(),
+      //home: MainScreen(appUser: appUser,),
       debugShowCheckedModeBanner: false,
       // routes: <String, WidgetBuilder>{
       //   '/signup': (BuildContext context) => SignupPage(),

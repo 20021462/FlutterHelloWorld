@@ -9,11 +9,13 @@ import '../main.dart';
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class SignupPage extends StatefulWidget {
+  const SignupPage({Key key}) : super(key: key);
+
   @override
-  _SignupPageState createState() => _SignupPageState();
+  SignupPageState createState() => SignupPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class SignupPageState extends State<SignupPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -27,6 +29,7 @@ class _SignupPageState extends State<SignupPage> {
       ).user;
       if(user != null) {
         DatabaseManager().userSetup(_emailController.text);
+        // ignore: use_build_context_synchronously
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => VerifyScreen(email: _emailController.text,)));
       }
@@ -43,19 +46,17 @@ class _SignupPageState extends State<SignupPage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Container(
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(15, 110, 0, 0),
-                    child: const Text("Sign Up",
-                        style: TextStyle(
-                            fontSize: 40, fontWeight: FontWeight.bold
-                        )
-                    ),
-                  )
-                ],
-              ),
+            Stack(
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.fromLTRB(15, 110, 0, 0),
+                  child: const Text("Sign Up",
+                      style: TextStyle(
+                          fontSize: 40, fontWeight: FontWeight.bold
+                      )
+                  ),
+                )
+              ],
             ),
             Container(
               padding: const EdgeInsets.only(top: 35, left: 20, right: 30),
@@ -103,15 +104,15 @@ class _SignupPageState extends State<SignupPage> {
                   const SizedBox(height: 20,),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff7f3dff),
-                        minimumSize: Size(380, 56),
+                        backgroundColor: const Color(0xff7f3dff),
+                        minimumSize: const Size(380, 56),
                         shape: shape,
                       ),
                       onPressed: () async {
                         _signup();
                       },
-                      child: Text(
-                        "Login",
+                      child: const Text(
+                        "Sign Up",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -124,7 +125,7 @@ class _SignupPageState extends State<SignupPage> {
                       InkWell(
                         onTap: () {
                           Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (context) => LoginPage()));;
+                              MaterialPageRoute(builder: (context) => LoginPage()));
                         },
                         child: const Text(
                             'Go Back',

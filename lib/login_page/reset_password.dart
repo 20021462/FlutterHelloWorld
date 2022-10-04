@@ -5,11 +5,13 @@ import '../main.dart';
 
 
 class ResetPassword extends StatefulWidget {
+  const ResetPassword({Key key}) : super(key: key);
+
   @override
-  _ResetPasswordState createState() => _ResetPasswordState();
+  ResetPasswordState createState() => ResetPasswordState();
 }
 
-class _ResetPasswordState extends State<ResetPassword> {
+class ResetPasswordState extends State<ResetPassword> {
   final auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   String error = '';
@@ -36,21 +38,19 @@ class _ResetPasswordState extends State<ResetPassword> {
       body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Container(
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.fromLTRB(20, 110, 0, 0),
-                    child: const Text(
-                        "Don’t worry. \nEnter your email and we’ll send you a link to reset your password.",
-                        style: TextStyle(
-                          fontSize: 30, fontWeight: FontWeight.bold,
-                        )
-                    ),
-                  )
-                ],
-              ),
+            Stack(
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.fromLTRB(20, 110, 0, 0),
+                  child: const Text(
+                      "Don’t worry. \nEnter your email and we’ll send you a link to reset your password.",
+                      style: TextStyle(
+                        fontSize: 30, fontWeight: FontWeight.bold,
+                      )
+                  ),
+                )
+              ],
             ),
             Container(
               padding: const EdgeInsets.only(top: 35, left: 20, right: 30),
@@ -87,14 +87,14 @@ class _ResetPasswordState extends State<ResetPassword> {
                   const SizedBox(height: 25,),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff7f3dff),
-                        minimumSize: Size(380, 56),
+                        backgroundColor: const Color(0xff7f3dff),
+                        minimumSize: const Size(380, 56),
                         shape: shape,
                       ),
                       onPressed: () async {
                         _reset();
                       },
-                      child: Text(
+                      child: const Text(
                         "Send request",
                         style: TextStyle(
                           fontSize: 20,
