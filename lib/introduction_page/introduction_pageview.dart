@@ -69,6 +69,7 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         padding: const EdgeInsets.only(bottom: 230),
         child: PageView(

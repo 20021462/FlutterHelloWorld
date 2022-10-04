@@ -35,6 +35,27 @@ class ResetPasswordState extends State<ResetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 70,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back,color: Colors.black,),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        centerTitle: true ,
+        title: const Text("Forget Password",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+          ),
+        ),
+      ),
+      resizeToAvoidBottomInset: false,
       body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -42,7 +63,7 @@ class ResetPasswordState extends State<ResetPassword> {
               children: <Widget>[
                 Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.fromLTRB(20, 110, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(20, 100, 20, 0),
                   child: const Text(
                       "Don’t worry. \nEnter your email and we’ll send you a link to reset your password.",
                       style: TextStyle(
@@ -53,24 +74,25 @@ class ResetPasswordState extends State<ResetPassword> {
               ],
             ),
             Container(
-              padding: const EdgeInsets.only(top: 35, left: 20, right: 30),
+              padding: const EdgeInsets.only(top: 50, left: 20, right: 30),
               child: Column(
                 children: <Widget>[
                   TextField(
                     controller: _emailController,
-                    decoration: const InputDecoration(
-                        labelText: 'EMAIL',
-                        labelStyle: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.green),
-                        )
+                    decoration: InputDecoration(
+                      hintText: "Email",
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: const BorderSide(color: Colors.grey,width: 0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide:  BorderSide(color: Colors.grey.shade900),
+                      ),
                     ),
+                    style: const TextStyle(fontSize: 20),
                   ),
-                  const SizedBox(height: 20,),
+                  const SizedBox(height: 10,),
                   Container(
                       alignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -84,45 +106,45 @@ class ResetPasswordState extends State<ResetPassword> {
                             color: Colors.red),
                       )
                   ),
-                  const SizedBox(height: 25,),
+                  const SizedBox(height: 10,),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff7f3dff),
-                        minimumSize: const Size(380, 56),
+                        minimumSize: const Size(380, 65),
                         shape: shape,
                       ),
                       onPressed: () async {
                         _reset();
                       },
                       child: const Text(
-                        "Send request",
+                        "Continue",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),)
                   ),
 
-                  const SizedBox(height: 15,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text(
-                            'Go Back',
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline,
-                                fontSize: 15
-                            )
-                        ),
-                      )
-                    ],
-                  )
+                  //const SizedBox(height: 15,),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: <Widget>[
+                  //     InkWell(
+                  //       onTap: () {
+                  //         Navigator.of(context).pop();
+                  //       },
+                  //       child: const Text(
+                  //           'Go Back',
+                  //           style: TextStyle(
+                  //               color: Colors.grey,
+                  //               fontFamily: 'Montserrat',
+                  //               fontWeight: FontWeight.bold,
+                  //               decoration: TextDecoration.underline,
+                  //               fontSize: 15
+                  //           )
+                  //       ),
+                  //     )
+                  //   ],
+                  // )
                 ],
               ),
             ),

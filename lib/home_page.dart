@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final bool showFab = MediaQuery.of(context).viewInsets.bottom==0.0;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -73,7 +74,9 @@ class _HomePageState extends State<HomePage> {
         bucket: bucket,
         child: currentScreen,
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: Visibility(
+        visible: showFab,
+        child: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
           setState(() {
@@ -81,7 +84,7 @@ class _HomePageState extends State<HomePage> {
             currentTab = 2;
           });
         },
-      ),
+      ),),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),

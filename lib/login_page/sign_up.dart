@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hello_world/login_page/login_page.dart';
 import 'package:hello_world/login_page/verify_email.dart';
 
 import '../firebase.dart';
@@ -21,6 +20,7 @@ class SignupPageState extends State<SignupPage> {
 
   bool failed = false;
   String error='';
+  bool hidePassword = true;
 
   void _signup() async {
     try{
@@ -43,56 +43,73 @@ class SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 70,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back,color: Colors.black,),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          centerTitle: true ,
+          title: const Text("Sign Up",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
+          ),
+        ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Stack(
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.fromLTRB(15, 110, 0, 0),
-                  child: const Text("Sign Up",
-                      style: TextStyle(
-                          fontSize: 40, fontWeight: FontWeight.bold
-                      )
-                  ),
-                )
-              ],
-            ),
             Container(
-              padding: const EdgeInsets.only(top: 35, left: 20, right: 30),
+              padding: const EdgeInsets.only(top: 100, left: 20, right: 30),
               child: Column(
                 children: <Widget>[
                   TextField(
                     controller: _emailController,
-                    decoration: const InputDecoration(
-                        labelText: 'EMAIL',
-                        labelStyle: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.green),
-                        )
+                    decoration: InputDecoration(
+                      hintText: "Email",
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: const BorderSide(color: Colors.grey,width: 0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide:  BorderSide(color: Colors.grey.shade900),
+                      ),
                     ),
+                    style: const TextStyle(fontSize: 20),
                   ),
-                  const SizedBox(height: 20,),
+                  const SizedBox(height: 25,),
                   TextField(
                     controller: _passwordController,
-                    decoration: const InputDecoration(
-                        labelText: 'PASSWORD',
-                        labelStyle: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey
+                    decoration: InputDecoration(
+                        hintText: 'Password',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: const BorderSide(color: Colors.grey,width: 0),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.green),
-                        )
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide:  BorderSide(color: Colors.grey.shade900),
+                        ),
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                hidePassword=!hidePassword;
+                              });
+                            },
+                            icon: Icon(hidePassword? Icons.remove_red_eye_outlined: Icons.remove_red_eye))
                     ),
-                    obscureText: true,
+                    obscureText: hidePassword,
+                    style: const TextStyle(fontSize: 20),
                   ),
-                  const SizedBox(height: 25.0,),
+                  const SizedBox(height: 20,),
                   Container(
                       alignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -105,41 +122,19 @@ class SignupPageState extends State<SignupPage> {
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff7f3dff),
-                        minimumSize: const Size(380, 56),
+                        minimumSize: const Size(380, 65),
                         shape: shape,
                       ),
                       onPressed: () async {
                         _signup();
                       },
                       child: const Text(
-                        "Sign Up",
+                        "Sign up",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),)
                   ),
-                  const SizedBox(height: 15,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (context) => LoginPage()));
-                        },
-                        child: const Text(
-                            'Go Back',
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline,
-                              fontSize: 15
-                            )
-                        ),
-                      )
-                    ],
-                  )
                 ],
               ),
             )
