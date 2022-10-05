@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_world/login_page/login_page.dart';
 import 'package:hello_world/login_page/verify_email.dart';
 
 import '../firebase.dart';
@@ -50,7 +51,9 @@ class SignupPageState extends State<SignupPage> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back,color: Colors.black,),
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context)=>LoginPage())
+              );
             },
           ),
           centerTitle: true ,

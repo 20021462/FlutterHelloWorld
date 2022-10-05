@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hello_world/login_page/verify_email.dart';
 import 'back_end/moma_user.dart';
 import 'introduction_page/introduction_pageview.dart';
 

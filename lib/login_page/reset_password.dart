@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hello_world/login_page/reset_password_email.dart';
 
 import '../main.dart';
 
@@ -23,6 +24,9 @@ class ResetPasswordState extends State<ResetPassword> {
       await auth.sendPasswordResetEmail(email: _emailController.text);
       setState(() {
         success = 1;
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => ResetPasswordEmail(email: _emailController.text))
+        );
       });
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -40,12 +44,12 @@ class ResetPasswordState extends State<ResetPassword> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back,color: Colors.black,),
+          icon: const Icon(Icons.arrow_back, color: Colors.black,),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
-        centerTitle: true ,
+        centerTitle: true,
         title: const Text("Forget Password",
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -58,22 +62,20 @@ class ResetPasswordState extends State<ResetPassword> {
       resizeToAvoidBottomInset: false,
       body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Stack(
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.fromLTRB(20, 100, 20, 0),
-                  child: const Text(
-                      "Don’t worry. \nEnter your email and we’ll send you a link to reset your password.",
-                      style: TextStyle(
-                        fontSize: 30, fontWeight: FontWeight.bold,
-                      )
-                  ),
-                )
-              ],
+          children: [
+            Container(
+              color:Colors.white,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.fromLTRB(20, 100, 20, 0),
+              child: const Text(
+                  "Don’t worry. \nEnter your email and we’ll send you a link to reset your password.",
+                  style: TextStyle(
+                    fontSize: 30, fontWeight: FontWeight.bold,
+                  )
+              ),
             ),
             Container(
+              color:Colors.white,
               padding: const EdgeInsets.only(top: 50, left: 20, right: 30),
               child: Column(
                 children: <Widget>[
@@ -83,11 +85,12 @@ class ResetPasswordState extends State<ResetPassword> {
                       hintText: "Email",
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: const BorderSide(color: Colors.grey,width: 0),
+                        borderSide: const BorderSide(
+                            color: Colors.grey, width: 0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide:  BorderSide(color: Colors.grey.shade900),
+                        borderSide: BorderSide(color: Colors.grey.shade900),
                       ),
                     ),
                     style: const TextStyle(fontSize: 20),
@@ -99,8 +102,6 @@ class ResetPasswordState extends State<ResetPassword> {
                       child: Text(
                         success == 0
                             ? ''
-                            : (success == 1)
-                            ? 'Send request successfully!'
                             : error,
                         style: const TextStyle(
                             color: Colors.red),

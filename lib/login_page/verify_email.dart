@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_world/home_page.dart';
+import 'package:hello_world/login_page/login_page.dart';
 import '../back_end/moma_user.dart';
+import '../main.dart';
 
 // ignore: must_be_immutable
 class VerifyScreen extends StatefulWidget {
@@ -39,13 +41,75 @@ class VerifyScreenState extends State<VerifyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-            'An email has been sent to ${user.email} please verify'),
-      ),
-    );
+        resizeToAvoidBottomInset: false,
+        body: Container(
+          padding: const EdgeInsets.only(bottom: 230),
+          color: Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 20,),
+              Image.asset(
+                'assets/images/illustrations4.png',
+                fit: BoxFit.cover,
+                width: 450,
+              ),
+              const SizedBox(height: 10,),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: const Text(
+                  'Your email is on the way',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(height: 30,),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  'Check your email ${user
+                      .email} follow the instructions to verify your email',
+                  style: TextStyle(
+                    color: Colors.teal.shade700,
+                    fontSize: 18,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
+          ),
+        ),
+        bottomSheet: Container(
+            color: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            height: 100,
+            child: Center(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xff7f3dff),
+                        minimumSize: const Size(370, 65),
+                        shape: shape,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => LoginPage())
+                        );
+                      },
+                      child: const Text(
+                        "Back to Login",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                  ),)
+            )
+        );
   }
-
   Future<void> checkEmailVerified() async {
     user = auth.currentUser;
     await user.reload();
