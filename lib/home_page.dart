@@ -3,7 +3,6 @@ import 'package:hello_world/adding_page.dart';
 import 'package:hello_world/planning_page.dart';
 import 'package:hello_world/reporting_page.dart';
 import 'package:hello_world/transaction_page.dart';
-import 'package:intl/intl.dart';
 import 'account_page.dart';
 import 'back_end/moma_user.dart';
 
@@ -25,8 +24,6 @@ class _HomePageState extends State<HomePage> {
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen;
 
-  final date = DateTime.now();
-
   _HomePageState(this.appUser) {
     currentScreen = TransactionPage(
       appUser: appUser,
@@ -35,41 +32,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final bool showFab = MediaQuery.of(context).viewInsets.bottom==0.0;
+    final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        toolbarHeight: 75,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              '${DateFormat("EEEE d").format(date).toUpperCase()}\n${DateFormat.MMMM().format(date).toUpperCase()}',
-              style: const TextStyle(
-                color: Colors.black87,
-                fontSize: 15,
-              ),
-            ),
-            Row(
-              children: const [
-                Icon(
-                  Icons.account_circle_rounded,
-                  color: Colors.black87,
-                  size: 37,
-                ),
-                Text(
-                  'Name',
-                  style: TextStyle(
-                    color: Colors.black87,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
       body: PageStorage(
         bucket: bucket,
         child: currentScreen,
@@ -77,14 +41,15 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: Visibility(
         visible: showFab,
         child: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          setState(() {
-            currentScreen = AddingPage(appUser: appUser);
-            currentTab = 2;
-          });
-        },
-      ),),
+          child: const Icon(Icons.add),
+          onPressed: () {
+            setState(() {
+              currentScreen = AddingPage(appUser: appUser);
+              currentTab = 2;
+            });
+          },
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
@@ -133,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.bar_chart,
+                          Icons.swap_horiz_rounded,
                           color: currentTab == 1 ? Colors.blue : Colors.grey,
                         ),
                         Text(
