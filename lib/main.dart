@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-<<<<<<< Updated upstream
-=======
-import 'package:hello_world/reporting_page.dart';
 import 'package:intl/intl.dart';
->>>>>>> Stashed changes
+import 'package:firebase_core/firebase_core.dart';
+import 'package:hello_world/reporting_page.dart';
 import 'back_end/moma_user.dart';
 import 'introduction_page/introduction_pageview.dart';
 
