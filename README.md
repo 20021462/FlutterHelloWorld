@@ -52,3 +52,22 @@ Một số hình ảnh:
 </tr>
 </table>
 
+### Tuần 5 : 
+
+<details>
+<p>
+ <img src='https://user-images.githubusercontent.com/72114667/194480610-6ab47b19-e29b-4e3c-9a96-9d5642cba3eb.gif'></img><br/>
+- Add verify screen
+- Add transaction screen
+- Add verify method via email address
+</p>
+</details>
+
+Một số hình ảnh mới :
+
+<table>
+<tr>
+<td><img src="https://user-images.githubusercontent.com/72114667/194478629-967556ca-a655-4222-b198-c8cfab7ec49d.png" height="300"></td>
+<td><img src="https://user-images.githubusercontent.com/72114667/194478746-2d2af2ed-5ba1-489f-a888-afe3a8599aec.png" height="300"></td>
+</tr>
+</table>
