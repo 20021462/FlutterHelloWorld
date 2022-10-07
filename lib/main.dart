@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/home_page.dart';
+import 'package:intl/intl.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hello_world/reporting_page.dart';
 import 'back_end/moma_user.dart';
 import 'introduction_page/introduction_pageview.dart';
 
@@ -23,10 +24,14 @@ import 'introduction_page/introduction_pageview.dart';
 
 const mainColor = Color(0xff7f3dff);
 final shape = RoundedRectangleBorder(
-  borderRadius: BorderRadius.circular(15)
+  borderRadius: BorderRadius.circular(15),
 );
 
 void main() async {
+  for (int i = 1; i < 13; i++) {
+    monthList.add(
+        DateFormat.MMM().format(DateTime(now.year, i, now.day)).toString());
+  }
   MomaUser appUser = MomaUser("test@gmail.com");
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -49,9 +54,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Inter',
       ),
-      home: IntroductionPageView(),
+      home: const IntroductionPageView(),
       //home: MainScreen(appUser: appUser,),
-      debugShowCheckedModeBanner: false,
+      //debugShowCheckedModeBanner: false,
       // routes: <String, WidgetBuilder>{
       //   '/signup': (BuildContext context) => SignupPage(),
       //   '/reset_password': (BuildContext context) => ResetPassword(),

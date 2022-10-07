@@ -32,13 +32,11 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 40,),
             Image.asset(
               urlImage,
               fit: BoxFit.cover,
-              width: 350,
+              width: 450,
             ),
-            const SizedBox(height: 10,),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Text(
@@ -50,7 +48,6 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
                 textAlign: TextAlign.center,
               ),
             ),
-            const SizedBox(height: 10,),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Text(
@@ -69,6 +66,7 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         padding: const EdgeInsets.only(bottom: 230),
         child: PageView(
@@ -89,7 +87,6 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
                 title: 'Planning ahead',
                 subtitle: 'Setup your budget for each category so you in control'
             ),
-
           ],
         ),
       ),
@@ -124,7 +121,7 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xff7f3dff),
-                  minimumSize: const Size(380,56),
+                  minimumSize: const Size(370,56),
                   shape: shape,
                 ),
                 onPressed: () {
@@ -143,7 +140,7 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
                 style: ElevatedButton.styleFrom(
                   foregroundColor: const Color(0xff7f3dff),
                   backgroundColor: Colors.grey.shade300,
-                  minimumSize: const Size(380,56),
+                  minimumSize: const Size(370,56),
                   shape: shape,
                 ),
                 onPressed: () {
@@ -157,8 +154,6 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
                       fontWeight: FontWeight.bold
                   ),)
             ),
-
-
           ],
         ),
       ),

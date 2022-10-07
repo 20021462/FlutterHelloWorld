@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_world/home_page.dart';
+import 'package:hello_world/introduction_page/introduction_pageview.dart';
 import 'package:hello_world/login_page/reset_password.dart';
 import 'package:hello_world/login_page/sign_up.dart';
 import 'package:hello_world/main.dart';
@@ -24,6 +25,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   String error = '';
+  bool hidePassword = true;
 
   void _singIn() async {
     try {
@@ -50,141 +52,151 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 70,
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text("Login",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-          color: Colors.black,
-        ),),
-      ),
-      resizeToAvoidBottomInset: false,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Stack(
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.fromLTRB(15, 110, 0, 0),
-                  child: const Text("Login",
-                      style: TextStyle(
-                          fontSize: 40, fontWeight: FontWeight.bold
-                      )
-                  ),
-                )
-              ],
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back,color: Colors.black,),
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => const IntroductionPageView()),
+            );
+          },
+        ),
+        centerTitle: true ,
+        title: const Text("Login",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
             ),
-            Container(
-              padding: const EdgeInsets.only(top: 35, left: 20, right: 30),
-              child: Column(
-                children: <Widget>[
-                  TextField(
-                    controller: _emailController,
-                    decoration: const InputDecoration(
-                        labelText: 'EMAIL',
-                        labelStyle: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.green),
-                        )
+          ),
+        ),
+      resizeToAvoidBottomInset: false,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+         Container(
+           color: Colors.white,
+            padding: const EdgeInsets.only(top: 100, left: 20, right: 30),
+            child: Column(
+              children: <Widget>[
+                TextField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                      hintText: "Email",
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: const BorderSide(color: Colors.grey,width: 0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide:  BorderSide(color: Colors.grey.shade900),
                     ),
                   ),
-                  const SizedBox(height: 25,),
-                  TextField(
-                    controller: _passwordController,
-                    decoration: const InputDecoration(
-                        labelText: 'PASSWORD',
-                        labelStyle: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.green),
-                        )
-                    ),
-                    obscureText: true,
-                  ),
-                  const SizedBox(height: 20,),
-                  Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Text(
-                        error,
-                        style: const TextStyle(color: Colors.red),
-                      )
-                  ),
-                  const SizedBox(height: 20,),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xff7f3dff),
-                        minimumSize: const Size(380, 56),
-                        shape: shape,
+                  style: const TextStyle(fontSize: 20),
+                ),
+                const SizedBox(height: 25,),
+                TextField(
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                      hintText: 'Password',
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: const BorderSide(color: Colors.grey,width: 0),
                       ),
-                      onPressed: () async {
-                        _singIn();
-                      },
-                      child: const Text(
-                        "Login",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),)
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide:  BorderSide(color: Colors.grey.shade900),
+                      ),
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            hidePassword=!hidePassword;
+                          });
+                        },
+                        icon: Icon(hidePassword? Icons.remove_red_eye_outlined: Icons.remove_red_eye))
                   ),
-                  const SizedBox(height: 25,),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const ResetPassword())
-                      );
+                  obscureText: hidePassword,
+                  style: const TextStyle(fontSize: 20),
+                ),
+                const SizedBox(height: 20,),
+                Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      error,
+                      style: const TextStyle(color: Colors.red),
+                    )
+                ),
+                const SizedBox(height: 20,),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xff7f3dff),
+                      minimumSize: const Size(380, 65),
+                      shape: shape,
+                    ),
+                    onPressed: () async {
+                      _singIn();
                     },
                     child: const Text(
-                      'Forgot Password',
+                      "Login",
                       style: TextStyle(
-                        color: mainColor,
-                        fontWeight: FontWeight.bold,
                         fontSize: 20,
-                      ),
+                        fontWeight: FontWeight.bold,
+                      ),)
+                ),
+                const SizedBox(height: 25,),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => const ResetPassword())
+                    );
+                  },
+                  child: const Text(
+                    'Forgot Password',
+                    style: TextStyle(
+                      color: mainColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
                     ),
                   ),
-                  const SizedBox(height: 25,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const Text('Don\'t have an acoount yet? ',
-                        style: TextStyle(
-                          color: Colors.grey,
+                ),
+                const SizedBox(height: 25,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text('Don\'t have an acoount yet? ',
+                      style: TextStyle(
+                        color: Colors.grey,
 
-                        ),),
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) =>
-                                  const SignupPage())
-                          );
-                        },
-                        child: const Text(
-                            'Sign Up',
-                            style: TextStyle(
-                                color: mainColor,
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline,
-                              fontSize: 15,
-                            )
-                        ),
-                      )
-                    ],
-                  ),
-
-                ],
-              ),
-            )
-          ],
-        )
+                      ),),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) =>
+                                const SignupPage())
+                        );
+                      },
+                      child: const Text(
+                          'Sign Up',
+                          style: TextStyle(
+                              color: mainColor,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline,
+                            fontSize: 15,
+                          )
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          )
+        ],
+      )
     );
   }
 }

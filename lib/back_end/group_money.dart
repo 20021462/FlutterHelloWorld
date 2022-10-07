@@ -33,7 +33,7 @@ List<GroupMoney> groupMoneyList = [
       Image.asset("assets/images/undefined.png", width: 32, height: 32)),
   GroupMoney("Food&Drink", OUTCOME,
       Image.asset("assets/images/food.png", width: 32, height: 32)),
-  GroupMoney("Gasoline Expenses", OUTCOME,
+  GroupMoney("Gasoline", OUTCOME,
       Image.asset("assets/images/move.png", width: 32, height: 32)),
   GroupMoney("Rent", OUTCOME,
       Image.asset("assets/images/rent.png", width: 32, height: 32)),
