@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'back_end/moma_user.dart';
 
 // ignore: must_be_immutable
-class AccountPage extends StatefulWidget {
+class ProfilePage extends StatefulWidget {
   MomaUser appUser;
 
-  AccountPage({Key key, MomaUser appUser}) : super(key: key);
+  ProfilePage({Key key, MomaUser appUser}) : super(key: key);
 
   @override
-  State<AccountPage> createState() => _AccountPageState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _AccountPageState extends State<AccountPage> {
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Center(

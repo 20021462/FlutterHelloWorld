@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hello_world/login_page/login_page.dart';
 import 'package:hello_world/login_page/sign_up.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../main.dart';
+
+import '../designSystem.dart';
 
 class IntroductionPageView extends StatefulWidget {
   const IntroductionPageView({Key key}) : super(key: key);

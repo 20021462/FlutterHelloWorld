@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/home_page.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hello_world/reporting_page.dart';
@@ -21,11 +22,6 @@ import 'introduction_page/introduction_pageview.dart';
 //   },
 // );
 // const int _blackPrimaryValue = 0xFF000000;
-
-const mainColor = Color(0xff7f3dff);
-final shape = RoundedRectangleBorder(
-  borderRadius: BorderRadius.circular(15),
-);
 
 void main() async {
   for (int i = 1; i < 13; i++) {
@@ -55,7 +51,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Inter',
       ),
       home: const IntroductionPageView(),
-      //home: MainScreen(appUser: appUser,),
+      //home: HomePage(appUser: appUser,),
       //debugShowCheckedModeBanner: false,
       // routes: <String, WidgetBuilder>{
       //   '/signup': (BuildContext context) => SignupPage(),

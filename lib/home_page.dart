@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/adding_page.dart';
-import 'package:hello_world/planning_page.dart';
+import 'package:hello_world/budget_page.dart';
 import 'package:hello_world/reporting_page.dart';
 import 'package:hello_world/transaction_page.dart';
-import 'account_page.dart';
+import 'profile_page.dart';
 import 'back_end/moma_user.dart';
 
 // ignore: must_be_immutable
@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final bool showFab = MediaQuery.of(context).viewInsets.bottom == 0.0;
     return Scaffold(
+      extendBody: true,
       body: PageStorage(
         bucket: bucket,
         child: currentScreen,
@@ -52,6 +53,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
+
         shape: const CircularNotchedRectangle(),
         notchMargin: 10,
         child: SizedBox(
@@ -120,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                     minWidth: 90,
                     onPressed: () {
                       setState(() {
-                        currentScreen = PlanningPage(appUser: appUser);
+                        currentScreen = BudgetPage(appUser: appUser);
                         currentTab = 3;
                       });
                     },
@@ -144,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                     minWidth: 90,
                     onPressed: () {
                       setState(() {
-                        currentScreen = AccountPage(appUser: appUser);
+                        currentScreen = ProfilePage(appUser: appUser);
                         currentTab = 4;
                       });
                     },
