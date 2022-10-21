@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/home_page.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hello_world/reporting_page.dart';
 import 'back_end/moma_user.dart';
-import 'introduction_page/introduction_pageview.dart';
 
 // const MaterialColor primaryBlack = MaterialColor(
 //   _blackPrimaryValue,
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Inter',
       ),
-      home: const IntroductionPageView(),
+      home: HomePage(),
       //home: MainScreen(appUser: appUser,),
       //debugShowCheckedModeBanner: false,
       // routes: <String, WidgetBuilder>{

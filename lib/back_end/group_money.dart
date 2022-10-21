@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 const String INCOME = "INCOME";
 const String OUTCOME = "OUTCOME";
@@ -21,38 +21,42 @@ const int SALARY = 11;
 const int OTHER_INCOME = 12;
 
 class GroupMoney {
+  int id;
   String name;
   String type;
-  Image icon;
+  IconData icon;
+  Color color;
+  Color background;
 
-  GroupMoney(this.name, this.type, this.icon);
+  GroupMoney(
+      this.id, this.name, this.type, this.icon, this.color, this.background);
 }
 
-List<GroupMoney> groupMoneyList = [
-  GroupMoney("Pick a money group", INCOME,
-      Image.asset("assets/images/undefined.png", width: 32, height: 32)),
-  GroupMoney("Food&Drink", OUTCOME,
-      Image.asset("assets/images/food.png", width: 32, height: 32)),
-  GroupMoney("Gasoline", OUTCOME,
-      Image.asset("assets/images/move.png", width: 32, height: 32)),
-  GroupMoney("Rent", OUTCOME,
-      Image.asset("assets/images/rent.png", width: 32, height: 32)),
-  GroupMoney("Hospital", OUTCOME,
-      Image.asset("assets/images/hospital.png", width: 32, height: 32)),
-  GroupMoney("Education", OUTCOME,
-      Image.asset("assets/images/education.png", width: 32, height: 32)),
-  GroupMoney("Pets", OUTCOME,
-      Image.asset("assets/images/pets.png", width: 32, height: 32)),
-  GroupMoney("Entertainment", OUTCOME,
-      Image.asset("assets/images/entertainment.png", width: 32, height: 32)),
-  GroupMoney("Sports", OUTCOME,
-      Image.asset("assets/images/sports.png", width: 32, height: 32)),
-  GroupMoney("Bills", OUTCOME,
-      Image.asset("assets/images/bills.png", width: 32, height: 32)),
-  GroupMoney("Investment", OUTCOME,
-      Image.asset("assets/images/investment.png", width: 32, height: 32)),
-  GroupMoney("Salary", INCOME,
-      Image.asset("assets/images/salary.png", width: 32, height: 32)),
-  GroupMoney("Other income", INCOME,
-      Image.asset("assets/images/otherIncome.png", width: 32, height: 32))
+var groupMoneyList = [
+  GroupMoney(UNDEFINED, "Pick a money group", INCOME, Icons.question_mark,
+      Colors.white, Colors.yellow),
+  GroupMoney(
+      FOOD, "Food&Drink", OUTCOME, Icons.restaurant, Colors.grey, Colors.white),
+  GroupMoney(GASOLINE_EXPENSES, "Gasoline", OUTCOME, Icons.local_gas_station,
+      Colors.red, Colors.red.shade100),
+  GroupMoney(RENT, "Rent", OUTCOME, Icons.home, Colors.white,
+      Colors.lightGreen.shade400),
+  GroupMoney(HOSPITAL, "Hospital", OUTCOME, Icons.local_hospital, Colors.white,
+      Colors.red),
+  GroupMoney(EDUCATION, "Education", OUTCOME, Icons.school,
+      Colors.indigo.shade800, Colors.cyan.shade100),
+  GroupMoney(
+      PETS, "Pets", OUTCOME, Icons.pets, Colors.pink.shade100, Colors.white),
+  GroupMoney(ENTERTAINMENT, "Entertainment", OUTCOME, Icons.sports_esports,
+      Colors.white, Colors.deepOrange),
+  GroupMoney(SPORTS, "Sports", OUTCOME, Icons.sports_basketball, Colors.orange,
+      Colors.orange.shade100),
+  GroupMoney(BILLS, "Bills", OUTCOME, Icons.receipt, Colors.white,
+      Colors.blue.shade300),
+  GroupMoney(INVESTMENT, "Investment", OUTCOME, Icons.trending_up,
+      Colors.yellow.shade400, Colors.blue),
+  GroupMoney(SALARY, "Salary", INCOME, Icons.payments, Colors.green,
+      Colors.green.shade100),
+  GroupMoney(OTHER_INCOME, "Other income", INCOME, Icons.paid, Colors.green,
+      Colors.green.shade100),
 ];

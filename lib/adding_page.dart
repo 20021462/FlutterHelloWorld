@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hello_world/back_end/group_money.dart';
 import 'package:hello_world/back_end/moma_user.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:hello_world/back_end/transaction.dart';
+import 'package:hello_world/reporting_page.dart';
 
 // ignore: must_be_immutable
 class AddingPage extends StatefulWidget {
@@ -14,9 +16,11 @@ class AddingPage extends StatefulWidget {
 }
 
 class _AddingPageState extends State<AddingPage> {
-  String categoryDropDownValue = groupMoneyList[0].name;
-
   final date = DateTime.now();
+
+  var moneyInput = 0;
+  var descriptionInput = '';
+  var groupInput = groupMoneyList[0].id;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,7 @@ class _AddingPageState extends State<AddingPage> {
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          toolbarHeight: 75,
+          toolbarHeight: 64,
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back,
@@ -67,6 +71,7 @@ class _AddingPageState extends State<AddingPage> {
                         thousandSeparator: ',',
                         decimalSeparator: '',
                         precision: 0,
+                        initialValue: moneyInput.toDouble(),
                       ),
                       decoration: const InputDecoration(
                         border: InputBorder.none,
@@ -80,6 +85,16 @@ class _AddingPageState extends State<AddingPage> {
                         fontSize: 40,
                         color: Colors.white,
                       ),
+                      onChanged: (value) {
+                        String input = "";
+                        for (int i = 0; i < value.length; i++) {
+                          if (value[i].compareTo('0') >= 0 &&
+                              value[i].compareTo('9') <= 0) {
+                            input += value[i];
+                          }
+                        }
+                        moneyInput = int.parse(input);
+                      },
                     ),
                   ],
                 ),
@@ -120,20 +135,29 @@ class _AddingPageState extends State<AddingPage> {
                         itemHeight: 60,
                         decoration:
                             const InputDecoration.collapsed(hintText: ''),
-                        value: categoryDropDownValue,
+                        value: groupInput,
                         onChanged: (category) {
                           setState(() {
-                            categoryDropDownValue = category;
+                            groupInput = category;
                           });
                         },
                         items: groupMoneyList.map((group) {
                           return DropdownMenuItem(
                             alignment: AlignmentDirectional.center,
-                            value: group.name,
+                            value: group.id,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                group.icon,
+                                Container(
+                                  padding: const EdgeInsets.all(5),
+                                  decoration: BoxDecoration(
+                                      color: group.background,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Icon(
+                                    group.icon,
+                                    color: group.color,
+                                  ),
+                                ),
                                 const SizedBox(width: 10),
                                 Text(group.name),
                               ],
@@ -143,7 +167,7 @@ class _AddingPageState extends State<AddingPage> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(bottom: 20),
+                      margin: const EdgeInsets.only(bottom: 100),
                       padding: const EdgeInsets.only(left: 10),
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -160,58 +184,24 @@ class _AddingPageState extends State<AddingPage> {
                         decoration: const InputDecoration.collapsed(
                           hintText: 'Description',
                         ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 20),
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black,
-                          style: BorderStyle.solid,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(25),
-                        color: Colors.white,
-                      ),
-                      child: DropdownButtonFormField(
-                        isDense: false,
-                        alignment: Alignment.centerLeft,
-                        itemHeight: 60,
-                        decoration:
-                            const InputDecoration.collapsed(hintText: ''),
-                        value: categoryDropDownValue,
-                        onChanged: (category) {
-                          setState(() {
-                            categoryDropDownValue = category;
-                          });
+                        onChanged: (value) {
+                          descriptionInput = value;
                         },
-                        items: groupMoneyList.map((group) {
-                          return DropdownMenuItem(
-                            alignment: AlignmentDirectional.center,
-                            value: group.name,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                group.icon,
-                                const SizedBox(width: 10),
-                                Text(group.name),
-                              ],
-                            ),
-                          );
-                        }).toList(),
                       ),
                     ),
                     Container(
                       height: 50,
                       width: double.infinity,
-                      margin: const EdgeInsets.only(top: 100),
+                      margin: const EdgeInsets.only(top: 70),
                       decoration: BoxDecoration(
                         color: Colors.deepPurple.shade400,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          transactions.add(Transaction(
+                              moneyInput, date, groupInput, descriptionInput));
+                        },
                         child: const Text(
                           'Continue',
                           style: TextStyle(
