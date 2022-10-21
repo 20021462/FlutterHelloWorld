@@ -19,13 +19,13 @@ DateTime now = DateTime.now();
 List<Transaction> transactions = [
   Transaction(83000, DateTime.now(), FOOD, 'Pizza'),
   Transaction(100000, DateTime.now(), GASOLINE_EXPENSES, 'Gas'),
-  Transaction(100000, DateTime.now(), GASOLINE_EXPENSES, 'Gas'),
-  Transaction(100000, DateTime.now(), GASOLINE_EXPENSES, 'Gas'),
-  Transaction(100000, DateTime.now(), GASOLINE_EXPENSES, 'Gas'),
-  Transaction(100000, DateTime.now(), GASOLINE_EXPENSES, 'Gas'),
-  Transaction(100000, DateTime.now(), GASOLINE_EXPENSES, 'Gas'),
-  Transaction(100000, DateTime.now(), GASOLINE_EXPENSES, 'Gas'),
-  Transaction(100000, DateTime.now(), GASOLINE_EXPENSES, 'Gas'),
+  Transaction(2000000, DateTime.now(), RENT, 'Rent'),
+  Transaction(12000000, DateTime.now(), SALARY, 'Salary'),
+  Transaction(60000, DateTime.now(), HOSPITAL, 'Hospital'),
+  Transaction(700000, DateTime.now(), EDUCATION, ''),
+  Transaction(100000, DateTime.now(), PETS, ''),
+  Transaction(320000, DateTime.now(), SPORTS, ''),
+  Transaction(230000, DateTime.now(), BILLS, ''),
 ];
 
 class _ReportingPageState extends State<ReportingPage> {
@@ -37,7 +37,7 @@ class _ReportingPageState extends State<ReportingPage> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          toolbarHeight: 75,
+          toolbarHeight: 64,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -168,12 +168,17 @@ class _ReportingPageState extends State<ReportingPage> {
                               height: 70,
                               width: 70,
                               decoration: BoxDecoration(
-                                color: Colors.red.shade100,
+                                color:
+                                    groupMoneyList[transaction.getGroupMoney()]
+                                        .background,
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                              child: const Icon(
-                                Icons.restaurant,
-                                color: Colors.red,
+                              child: Icon(
+                                groupMoneyList[transaction.getGroupMoney()]
+                                    .icon,
+                                color:
+                                    groupMoneyList[transaction.getGroupMoney()]
+                                        .color,
                                 size: 40,
                               ),
                             ),
@@ -211,14 +216,25 @@ class _ReportingPageState extends State<ReportingPage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    '- ${NumberFormat("#,###").format(transaction.getMoney())}đ',
-                                    style: const TextStyle(
-                                      color: Colors.red,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 17,
-                                    ),
-                                  ),
+                                  groupMoneyList[transaction.getGroupMoney()]
+                                              .type ==
+                                          'OUTCOME'
+                                      ? Text(
+                                          '- ${NumberFormat("#,###").format(transaction.getMoney())}đ',
+                                          style: const TextStyle(
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 17,
+                                          ),
+                                        )
+                                      : Text(
+                                          '+ ${NumberFormat("#,###").format(transaction.getMoney())}đ',
+                                          style: const TextStyle(
+                                            color: Colors.green,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 17,
+                                          ),
+                                        ),
                                   Text(
                                     DateFormat.Hm()
                                         .format(transaction.getTime()),

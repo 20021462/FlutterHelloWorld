@@ -5,9 +5,9 @@ import '../main.dart';
 import 'login_page.dart';
 
 class ResetPasswordEmail extends StatelessWidget {
-  String email;
+  final String email;
 
-  ResetPasswordEmail({Key key,this.email}) : super(key: key);
+  const ResetPasswordEmail({Key key, this.email}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +19,17 @@ class ResetPasswordEmail extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               Image.asset(
                 'assets/images/illustrations4.png',
                 fit: BoxFit.cover,
                 width: 450,
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: const Text(
@@ -37,11 +41,13 @@ class ResetPasswordEmail extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 30,),
+              const SizedBox(
+                height: 30,
+              ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Text(
-                  'Check your email ${this.email} follow the instructions to verify your password',
+                  'Check your email $email follow the instructions to verify your password',
                   style: TextStyle(
                     color: Colors.teal.shade700,
                     fontSize: 18,
@@ -65,8 +71,7 @@ class ResetPasswordEmail extends StatelessWidget {
                   ),
                   onPressed: () {
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => LoginPage())
-                    );
+                        MaterialPageRoute(builder: (context) => LoginPage()));
                   },
                   child: const Text(
                     "Back to Login",
@@ -74,9 +79,7 @@ class ResetPasswordEmail extends StatelessWidget {
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
-                  )
-              ),)
-        )
-    );
+                  )),
+            )));
   }
 }
