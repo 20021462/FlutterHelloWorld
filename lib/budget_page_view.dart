@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
 
 import 'back_end/moma_user.dart';
 import 'package:hello_world/back_end/group_money.dart';
 
-import 'designSystem.dart';
-import 'main.dart';
+import '../design_system.dart';
 
+// ignore: must_be_immutable
 class BudgetPageView extends StatefulWidget {
   DateTime dateTime;
   MomaUser appUser;
@@ -24,7 +23,7 @@ class _BudgetPageViewState extends State<BudgetPageView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [

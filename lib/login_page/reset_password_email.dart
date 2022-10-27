@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../designSystem.dart';
-import '../main.dart';
+import '../design_system.dart';
 import 'login_page.dart';
 
+// ignore: must_be_immutable
 class ResetPasswordEmail extends StatelessWidget {
   String email;
 
@@ -41,7 +41,7 @@ class ResetPasswordEmail extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Text(
-                  'Check your email ${this.email} follow the instructions to verify your password',
+                  'Check your email $email follow the instructions to verify your password',
                   style: TextStyle(
                     color: Colors.teal.shade700,
                     fontSize: 18,

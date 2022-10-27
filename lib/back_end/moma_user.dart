@@ -14,14 +14,14 @@ class MomaUser {
     transactions = <Transaction>[];
   }
 
-  void removeID(int index) {
+  Transaction removeID(int index) {
     for (int i = 0; i < transactions.length; i++) {
       if (transactions[i].getID() == index) {
-        transactions.removeAt(i);
+        return transactions.removeAt(i);
         //updateTransaction(transactions, uid);
-        return;
       }
     }
+    return null;
   }
 
   Transaction findID(int index) {
@@ -83,14 +83,5 @@ class MomaUser {
       // ignore: avoid_print
       print(i);
     }
-  }
-
-  @override
-  String toString() {
-    String res = '$gmail\n';
-    for (int i = 0; i < transactions.length; i++) {
-      res += transactions[i].toString();
-    }
-    return res;
   }
 }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/main.dart';
 
 import 'back_end/moma_user.dart';
 import 'budget_page_view.dart';
-import 'designSystem.dart';
+import '../design_system.dart';
 
 // ignore: must_be_immutable
 class BudgetPage extends StatefulWidget {
@@ -51,7 +50,7 @@ class _BudgetPageState extends State<BudgetPage> {
           ),
           actions: [
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_forward_ios,
                 size: 30,
                 color: Colors.white,
@@ -67,7 +66,7 @@ class _BudgetPageState extends State<BudgetPage> {
           title: Text(
             '${dateCount(date, pageChanged).month}/${dateCount(
                 date, pageChanged).year}',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),

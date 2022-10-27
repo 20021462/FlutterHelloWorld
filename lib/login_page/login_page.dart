@@ -6,7 +6,7 @@ import 'package:hello_world/login_page/reset_password.dart';
 import 'package:hello_world/login_page/sign_up.dart';
 
 import '../back_end/moma_user.dart';
-import '../designSystem.dart';
+import '../design_system.dart';
 
 
 final FirebaseAuth _auth = FirebaseAuth.instance;

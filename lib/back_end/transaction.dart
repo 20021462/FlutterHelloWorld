@@ -73,9 +73,3 @@ class Transaction {
     return "[$_index,${groupMoneyList[_groupMoney].name}, $_money, $_time, $_note]";
   }
 }
-
-void swapTransaction(Transaction a, Transaction b) {
-  Transaction temp = a;
-  a = b;
-  b = temp;
-}

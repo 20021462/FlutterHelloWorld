@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_world/home_page.dart';
 import 'package:hello_world/login_page/login_page.dart';
 import '../back_end/moma_user.dart';
-import '../designSystem.dart';
-import '../main.dart';
+import '../design_system.dart';
 
 // ignore: must_be_immutable
 class VerifyScreen extends StatefulWidget {

@@ -20,7 +20,7 @@ Widget buildButton(String text, Size size,VoidCallback onPressed,){
       },
       child: Text(
         text,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
         ),)
