@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'back_end/moma_user.dart';
-import 'package:hello_world/back_end/group_money.dart';
+import 'module/moma_user.dart';
+import 'module/group_money.dart';
 
 import '../design_system.dart';
 
@@ -11,11 +11,10 @@ class BudgetPageView extends StatefulWidget {
   DateTime dateTime;
   MomaUser appUser;
 
-  BudgetPageView({Key key,this.dateTime,this.appUser}) : super(key: key);
+  BudgetPageView({Key key, this.dateTime, this.appUser}) : super(key: key);
 
   @override
   State<BudgetPageView> createState() => _BudgetPageViewState();
-
 }
 
 class _BudgetPageViewState extends State<BudgetPageView> {
@@ -26,9 +25,7 @@ class _BudgetPageViewState extends State<BudgetPageView> {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: Column(
-        children: [
-          buildButton("Create a budget", sizeType2,() {})
-        ],
+        children: [buildButton("Create a budget", sizeType2, () {})],
       ),
     );
   }

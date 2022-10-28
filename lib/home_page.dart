@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/adding_page.dart';
+import 'package:hello_world/login_page/login_page.dart';
 import 'package:hello_world/planning_page.dart';
 import 'package:hello_world/reporting_page.dart';
 import 'package:hello_world/transaction_page.dart';
-import 'account_page.dart';
 import 'module/moma_user.dart';
 
 // ignore: must_be_immutable
@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                     minWidth: 90,
                     onPressed: () {
                       setState(() {
-                        currentScreen = AccountPage(appUser: appUser);
+                        currentScreen = LoginPage(appUser: appUser);
                         currentTab = 4;
                       });
                     },
