@@ -1,6 +1,6 @@
 # Nhóm 11 - INT 3020 40
 
-## Thành viên
+## Member
 
 - Nguyễn Trung Tú - 20021462
 
@@ -8,29 +8,31 @@
 
 - Đỗ Ngọc Anh - 20021284
 
-## Tiến trình học
+## Learning Progress
 
-### Tuần 1 : Nghỉ lễ 2/9
-### Tuần 2 : Tạo một chương trình Hello World
+### Week 1 : 2/9
+### Week 2 : Create application Hello World
 
 ![image](https://user-images.githubusercontent.com/72114667/190576826-11f333ec-97d3-4dde-a9a9-e31fc643294a.png)
 
-### Tuần 3 : Làm được ứng dụng có giao diện sử dụng 5 loại điều khiển thường dùng nhất: TextBox, List, v.v.
+### Week 3 : Create application using 5 types of controller: TextBox, List, v.v.
 
-![image](https://user-images.githubusercontent.com/72114667/191903040-e3a4bb05-5a9c-4a94-806d-df716948f216.gif)
+<img src="https://user-images.githubusercontent.com/72114667/191903040-e3a4bb05-5a9c-4a94-806d-df716948f216.gif" height="600">
 
 ### Tuần 4 : 
 
-<details><summary>Tú's branch :</summary>
+
 <p>
- <img src='https://user-images.githubusercontent.com/78422523/193197409-34ce4c95-eed1-4844-a7dc-1d83544329c0.gif'></img><br/>
+ Tú's branch :<br/>
+ <img src='https://user-images.githubusercontent.com/78422523/193197409-34ce4c95-eed1-4844-a7dc-1d83544329c0.gif' height="600"></img><br/>
 - Add the new AppBar <br/>
 - WIP AddingPage, can not input user data yet
 </p>
-</details>
 
-<details><summary>Main branch :</summary>
+
+
 <p>
+ Main branch :<br/>
  <img src='https://user-images.githubusercontent.com/72114667/193205648-3ef068f8-f062-41cd-923b-a3f022c0a9c9.gif'></img><br/>
 - Add introduction pages<br/>
 - Add login page<br/>
@@ -39,9 +41,8 @@
 - Add sign up page<br/>
 - Add login method by Firebase_auth (by email and password)
 </p>
-</details>
 
-Một số hình ảnh:
+Some screens:
 
 <table>
 <tr>
@@ -52,10 +53,8 @@ Một số hình ảnh:
 </tr>
 </table>
 
-### Tuần 5 : 
-
-<details>
-<p> <summary>Main branch :</summary>
+### Week 5 : 
+<p>
  <img src='https://user-images.githubusercontent.com/72114667/194480610-6ab47b19-e29b-4e3c-9a96-9d5642cba3eb.gif'></img><br/>
 - Add verify screen <br/>
 - Add transaction screen <br/>
@@ -69,11 +68,28 @@ Một số hình ảnh:
 </tr>
 </table>
 </p>
-</details>
 
-### Tuần 6:
+
+### Week 6:
 <p> Main branch :<br/>
  <img src='https://user-images.githubusercontent.com/72114667/198518189-103078d1-bdf0-4469-845b-0a37e652e434.png'></img><br/>
 - Automation testing <br/>
 - Export testing coverage <br/>
 </p>
+
+### Week 7:
+<p>
+- Change display logo and name of Moma <br/>
+- Add profile screen <br/>
+- Add budget screen <br/>
+- New screens : <br/>
+
+<table>
+<tr>
+<td><img src="https://user-images.githubusercontent.com/72114667/198520586-7590fb69-0a43-42ae-892f-c3b056d47d0e.png" height="300"></td>
+<td><img src="https://user-images.githubusercontent.com/72114667/198520629-1751e963-1c99-4a0f-aafd-77ed09aba3db.png" height="300"></td>
+<td><img src="https://user-images.githubusercontent.com/72114667/198520645-e8a255d1-e25d-4761-b9e8-6e9e6b81d014.png" height="300"></td>
+</tr>
+</table>
+</p>
+
