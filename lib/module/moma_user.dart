@@ -1,4 +1,4 @@
-import 'package:hello_world/back_end/transaction.dart';
+import 'package:hello_world/module/transaction.dart';
 
 import 'group_money.dart';
 
@@ -7,7 +7,7 @@ class MomaUser {
   List<Transaction> transactions;
   // ignore: non_constant_identifier_names
   int MAX_ID = 0;
-  int currentMoney = 0;
+  double currentMoney = 0;
   String uid = "";
 
   MomaUser(this.gmail) {
@@ -70,7 +70,7 @@ class MomaUser {
     }
   }
 
-  int getCurrentMoney() {
+  double getCurrentMoney() {
     return currentMoney;
   }
 

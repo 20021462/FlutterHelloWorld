@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'back_end/moma_user.dart';
+import 'module/moma_user.dart';
 
 // ignore: must_be_immutable
 class PlanningPage extends StatefulWidget {

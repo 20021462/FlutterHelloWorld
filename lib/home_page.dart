@@ -4,7 +4,7 @@ import 'package:hello_world/planning_page.dart';
 import 'package:hello_world/reporting_page.dart';
 import 'package:hello_world/transaction_page.dart';
 import 'account_page.dart';
-import 'back_end/moma_user.dart';
+import 'module/moma_user.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatefulWidget {

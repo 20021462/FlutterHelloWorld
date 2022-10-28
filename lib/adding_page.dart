@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/back_end/group_money.dart';
-import 'package:hello_world/back_end/moma_user.dart';
+import 'package:hello_world/module/group_money.dart';
+import 'package:hello_world/module/moma_user.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
-import 'package:hello_world/back_end/transaction.dart';
+import 'package:hello_world/module/transaction.dart';
 import 'package:hello_world/reporting_page.dart';
 
 // ignore: must_be_immutable
@@ -18,7 +18,7 @@ class AddingPage extends StatefulWidget {
 class _AddingPageState extends State<AddingPage> {
   final date = DateTime.now();
 
-  var moneyInput = 0;
+  var moneyInput = 0.0;
   var descriptionInput = '';
   var groupInput = groupMoneyList[0].id;
 
@@ -67,10 +67,10 @@ class _AddingPageState extends State<AddingPage> {
                     ),
                     TextField(
                       controller: MoneyMaskedTextController(
-                        rightSymbol: 'đ',
+                        leftSymbol: '\$',
                         thousandSeparator: ',',
-                        decimalSeparator: '',
-                        precision: 0,
+                        decimalSeparator: '.',
+                        precision: 2,
                         initialValue: moneyInput.toDouble(),
                       ),
                       decoration: const InputDecoration(
@@ -86,14 +86,8 @@ class _AddingPageState extends State<AddingPage> {
                         color: Colors.white,
                       ),
                       onChanged: (value) {
-                        String input = "";
-                        for (int i = 0; i < value.length; i++) {
-                          if (value[i].compareTo('0') >= 0 &&
-                              value[i].compareTo('9') <= 0) {
-                            input += value[i];
-                          }
-                        }
-                        moneyInput = int.parse(input);
+                        String input = value.substring(1);
+                        moneyInput = double.parse(input);
                       },
                     ),
                   ],

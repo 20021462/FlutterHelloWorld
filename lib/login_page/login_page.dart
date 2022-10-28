@@ -6,8 +6,7 @@ import 'package:hello_world/login_page/reset_password.dart';
 import 'package:hello_world/login_page/sign_up.dart';
 import 'package:hello_world/main.dart';
 
-import '../back_end/moma_user.dart';
-
+import '../module/moma_user.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -30,15 +29,15 @@ class _LoginPageState extends State<LoginPage> {
   void _singIn() async {
     try {
       final User user = (await _auth.signInWithEmailAndPassword(
-          email: _emailController.text, password: _passwordController.text))
+              email: _emailController.text, password: _passwordController.text))
           .user;
       if (user != null) {
         widget.appUser = MomaUser(_emailController.text);
         setState(() {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                  builder: (context) => HomePage(appUser: widget.appUser,))
-          );
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => HomePage(
+                    appUser: widget.appUser,
+                  )));
         });
       }
     } on FirebaseAuthException catch (e) {
@@ -51,152 +50,163 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 70,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back,color: Colors.black,),
-          onPressed: () {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const IntroductionPageView()),
-            );
-          },
-        ),
-        centerTitle: true ,
-        title: const Text("Login",
+        appBar: AppBar(
+          toolbarHeight: 70,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                    builder: (context) => const IntroductionPageView()),
+              );
+            },
+          ),
+          centerTitle: true,
+          title: const Text(
+            "Login",
             textAlign: TextAlign.center,
             style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
             ),
           ),
         ),
-      resizeToAvoidBottomInset: false,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-         Container(
-           color: Colors.white,
-            padding: const EdgeInsets.only(top: 100, left: 20, right: 30),
-            child: Column(
-              children: <Widget>[
-                TextField(
-                  controller: _emailController,
-                  decoration: InputDecoration(
+        resizeToAvoidBottomInset: false,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              color: Colors.white,
+              padding: const EdgeInsets.only(top: 100, left: 20, right: 30),
+              child: Column(
+                children: <Widget>[
+                  TextField(
+                    controller: _emailController,
+                    decoration: InputDecoration(
                       hintText: "Email",
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: const BorderSide(color: Colors.grey,width: 0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide:  BorderSide(color: Colors.grey.shade900),
-                    ),
-                  ),
-                  style: const TextStyle(fontSize: 20),
-                ),
-                const SizedBox(height: 25,),
-                TextField(
-                  controller: _passwordController,
-                  decoration: InputDecoration(
-                      hintText: 'Password',
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: const BorderSide(color: Colors.grey,width: 0),
+                        borderSide:
+                            const BorderSide(color: Colors.grey, width: 0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide:  BorderSide(color: Colors.grey.shade900),
+                        borderSide: BorderSide(color: Colors.grey.shade900),
                       ),
-                    suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            hidePassword=!hidePassword;
-                          });
-                        },
-                        icon: Icon(hidePassword? Icons.remove_red_eye_outlined: Icons.remove_red_eye))
-                  ),
-                  obscureText: hidePassword,
-                  style: const TextStyle(fontSize: 20),
-                ),
-                const SizedBox(height: 20,),
-                Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(
-                      error,
-                      style: const TextStyle(color: Colors.red),
-                    )
-                ),
-                const SizedBox(height: 20,),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff7f3dff),
-                      minimumSize: const Size(380, 65),
-                      shape: shape,
                     ),
-                    onPressed: () async {
-                      _singIn();
-                    },
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),)
-                ),
-                const SizedBox(height: 25,),
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (context) => const ResetPassword())
-                    );
-                  },
-                  child: const Text(
-                    'Forgot Password',
-                    style: TextStyle(
-                      color: mainColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
+                    style: const TextStyle(fontSize: 20),
                   ),
-                ),
-                const SizedBox(height: 25,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text('Don\'t have an acoount yet? ',
-                      style: TextStyle(
-                        color: Colors.grey,
-
-                      ),),
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) =>
-                                const SignupPage())
-                        );
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  TextField(
+                    controller: _passwordController,
+                    decoration: InputDecoration(
+                        hintText: 'Password',
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide:
+                              const BorderSide(color: Colors.grey, width: 0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Colors.grey.shade900),
+                        ),
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                hidePassword = !hidePassword;
+                              });
+                            },
+                            icon: Icon(hidePassword
+                                ? Icons.remove_red_eye_outlined
+                                : Icons.remove_red_eye))),
+                    obscureText: hidePassword,
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        error,
+                        style: const TextStyle(color: Colors.red),
+                      )),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xff7f3dff),
+                        minimumSize: const Size(380, 65),
+                        shape: shape,
+                      ),
+                      onPressed: () async {
+                        _singIn();
                       },
                       child: const Text(
-                          'Sign Up',
-                          style: TextStyle(
+                        "Login",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const ResetPassword()));
+                    },
+                    child: const Text(
+                      'Forgot Password',
+                      style: TextStyle(
+                        color: mainColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Text(
+                        'Don\'t have an acoount yet? ',
+                        style: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const SignupPage()));
+                        },
+                        child: const Text('Sign Up',
+                            style: TextStyle(
                               color: mainColor,
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.underline,
-                            fontSize: 15,
-                          )
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            ),
-          )
-        ],
-      )
-    );
+                              fontSize: 15,
+                            )),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            )
+          ],
+        ));
   }
 }

@@ -4,20 +4,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_world/home_page.dart';
 import 'package:hello_world/login_page/login_page.dart';
-import '../back_end/moma_user.dart';
+import '../module/moma_user.dart';
 import '../main.dart';
 
 // ignore: must_be_immutable
 class VerifyScreen extends StatefulWidget {
   String email;
-  VerifyScreen({Key key,this.email}) : super(key: key);
+  VerifyScreen({Key key, this.email}) : super(key: key);
 
   @override
   VerifyScreenState createState() => VerifyScreenState();
 }
 
 class VerifyScreenState extends State<VerifyScreen> {
-
   final auth = FirebaseAuth.instance;
   User user;
   Timer timer;
@@ -49,13 +48,17 @@ class VerifyScreenState extends State<VerifyScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               Image.asset(
                 'assets/images/illustrations4.png',
                 fit: BoxFit.cover,
                 width: 450,
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: const Text(
@@ -67,12 +70,13 @@ class VerifyScreenState extends State<VerifyScreen> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 30,),
+              const SizedBox(
+                height: 30,
+              ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  'Check your email ${user
-                      .email} follow the instructions to verify your email',
+                  'Check your email ${user.email} follow the instructions to verify your email',
                   style: TextStyle(
                     color: Colors.teal.shade700,
                     fontSize: 18,
@@ -88,36 +92,36 @@ class VerifyScreenState extends State<VerifyScreen> {
             padding: const EdgeInsets.symmetric(vertical: 20),
             height: 100,
             child: Center(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xff7f3dff),
-                        minimumSize: const Size(370, 65),
-                        shape: shape,
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => LoginPage())
-                        );
-                      },
-                      child: const Text(
-                        "Back to Login",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
-                  ),)
-            )
-        );
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff7f3dff),
+                    minimumSize: const Size(370, 65),
+                    shape: shape,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => LoginPage()));
+                  },
+                  child: const Text(
+                    "Back to Login",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
+            )));
   }
+
   Future<void> checkEmailVerified() async {
     user = auth.currentUser;
     await user.reload();
     if (user.emailVerified) {
       timer.cancel();
       // ignore: use_build_context_synchronously
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => HomePage(appUser: MomaUser(widget.email))));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => HomePage(appUser: MomaUser(widget.email))));
       // Navigator.of(context).pushNamed('/main_screen');
     }
   }
