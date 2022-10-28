@@ -71,4 +71,9 @@ Một số hình ảnh:
 </p>
 </details>
 
-
+### Tuần 6:
+<p> Main branch :<br/>
+ <img src='https://user-images.githubusercontent.com/72114667/198518189-103078d1-bdf0-4469-845b-0a37e652e434.png'></img><br/>
+- Automation testing <br/>
+- Export testing coverage <br/>
+</p>
