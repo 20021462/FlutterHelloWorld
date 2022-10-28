@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'back_end/moma_user.dart';
+import 'module/moma_user.dart';
 import 'budget_page_view.dart';
 import '../design_system.dart';
 
@@ -18,14 +18,14 @@ class _BudgetPageState extends State<BudgetPage> {
   PageController pageController = PageController(initialPage: 0);
   int pageChanged = 0;
 
-  DateTime dateCount(DateTime dateTime, int index){
-    int newTimeMonth=dateTime.month-index;
+  DateTime dateCount(DateTime dateTime, int index) {
+    int newTimeMonth = dateTime.month - index;
     int newTimeYear = dateTime.year;
-    while(newTimeMonth<=0){
-      newTimeMonth+=12;
-      newTimeYear-=1;
+    while (newTimeMonth <= 0) {
+      newTimeMonth += 12;
+      newTimeYear -= 1;
     }
-    return DateTime(newTimeYear,newTimeMonth);
+    return DateTime(newTimeYear, newTimeMonth);
   }
 
   @override
@@ -64,18 +64,14 @@ class _BudgetPageState extends State<BudgetPage> {
           ],
           centerTitle: true,
           title: Text(
-            '${dateCount(date, pageChanged).month}/${dateCount(
-                date, pageChanged).year}',
+            '${dateCount(date, pageChanged).month}/${dateCount(date, pageChanged).year}',
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           )),
       body: Container(
-        height: MediaQuery
-            .of(context)
-            .size
-            .height,
+        height: MediaQuery.of(context).size.height,
         color: mainColor,
         child: Column(
           children: [
@@ -103,12 +99,13 @@ class _BudgetPageState extends State<BudgetPage> {
                       });
                     },
                     itemBuilder: (BuildContext context, int index) {
-                      return BudgetPageView(dateTime: dateCount(date, index),
-                        appUser: widget.appUser,);
+                      return BudgetPageView(
+                        dateTime: dateCount(date, index),
+                        appUser: widget.appUser,
+                      );
                     },
                     itemCount: 10,
-                  )
-              ),
+                  )),
             ),
           ],
         ),
