@@ -1,4 +1,4 @@
-# Nhóm 11 - INT 3020 40
+# Group 11 - INT 3020 40
 
 ## Member
 
@@ -29,8 +29,6 @@
 - WIP AddingPage, can not input user data yet
 </p>
 
-
-
 <p>
  Main branch :<br/>
  <img src='https://user-images.githubusercontent.com/72114667/193205648-3ef068f8-f062-41cd-923b-a3f022c0a9c9.gif'></img><br/>
@@ -55,7 +53,7 @@ Some screens:
 
 ### Week 5 : 
 <p>
- <img src='https://user-images.githubusercontent.com/72114667/194480610-6ab47b19-e29b-4e3c-9a96-9d5642cba3eb.gif'></img><br/>
+ <img src='https://user-images.githubusercontent.com/72114667/194480610-6ab47b19-e29b-4e3c-9a96-9d5642cba3eb.gif' height="600"></img><br/>
 - Add verify screen <br/>
 - Add transaction screen <br/>
 - Add verify method via email address <br/>
@@ -69,10 +67,11 @@ Some screens:
 </table>
 </p>
 
-
 ### Week 6:
-<p> Main branch :<br/>
+<p>
  <img src='https://user-images.githubusercontent.com/72114667/198518189-103078d1-bdf0-4469-845b-0a37e652e434.png'></img><br/>
+ <img src='https://user-images.githubusercontent.com/72114667/198526177-d582d899-2c0a-4c03-8456-29667bee440d.png'></img><br/>
+- Run monkey testing <br/>
 - Automation testing <br/>
 - Export testing coverage <br/>
 </p>
