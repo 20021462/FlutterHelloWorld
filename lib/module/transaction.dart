@@ -1,9 +1,8 @@
 import 'dart:core';
-import 'group_money.dart';
 
 class Transaction {
   int _index;
-  int _money;
+  double _money;
   DateTime _time;
   int _groupMoney;
   String _note;
@@ -15,7 +14,7 @@ class Transaction {
     return _index;
   }
 
-  int getMoney() {
+  double getMoney() {
     return _money;
   }
 
@@ -35,7 +34,7 @@ class Transaction {
     _index = index;
   }
 
-  void setMoney(int money) {
+  void setMoney(double money) {
     _money = money;
   }
 
@@ -66,10 +65,5 @@ class Transaction {
       }
     }
     return false;
-  }
-
-  @override
-  String toString() {
-    return "[$_index,${groupMoneyList[_groupMoney].name}, $_money, $_time, $_note]";
   }
 }

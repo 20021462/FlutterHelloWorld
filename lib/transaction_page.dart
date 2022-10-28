@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'back_end/moma_user.dart';
+import 'package:intl/intl.dart';
+import 'module/moma_user.dart';
+import 'reporting_page.dart';
+import 'widget/transaction_card.dart';
 
 // ignore: must_be_immutable
 class TransactionPage extends StatefulWidget {
@@ -12,31 +15,227 @@ class TransactionPage extends StatefulWidget {
 }
 
 class _TransactionPageState extends State<TransactionPage> {
-  int count = 0;
-
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: ListView(
+        padding: const EdgeInsets.all(0),
         children: [
-          const Text(
-            "Icon button",
-            style: TextStyle(fontSize: 30),
-          ),
-          Text(
-            '$count',
-            style: const TextStyle(fontSize: 120),
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.add,
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(width: 2.0),
+              borderRadius: const BorderRadius.vertical(
+                bottom: Radius.circular(40),
+              ),
+              gradient: const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: <Color>[
+                  Color(0xFFFFF6E5),
+                  Color(0xFFFEFBF5),
+                ],
+              ),
             ),
-            onPressed: () {
-              setState(() {
-                count++;
-              });
-            },
+            child: SafeArea(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 64,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.account_circle,
+                              color: Theme.of(context).primaryColor,
+                              size: 30,
+                            )),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.notifications,
+                            color: Theme.of(context).primaryColor,
+                            size: 30,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.topCenter,
+                    child: const Text(
+                      'Account Balance',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 10),
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      '\$${NumberFormat("#,###.##").format(9400)}',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 40,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 160,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF00A86B),
+                          borderRadius: BorderRadius.circular(27),
+                        ),
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(18),
+                              ),
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.attach_money),
+                                color: const Color(0xFF00A86B),
+                                iconSize: 32,
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Income',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  '\$${NumberFormat("#,###.##").format(100.200)}',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      Container(
+                        width: 160,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFFD3C4A),
+                          borderRadius: BorderRadius.circular(27),
+                        ),
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(18),
+                              ),
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.money_off),
+                                color: const Color(0xFFFD3C4A),
+                                iconSize: 32,
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Expenses',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  '\$${NumberFormat("#,###.##").format(100.200)}',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 25),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            color: Colors.white,
+            padding: const EdgeInsets.all(20),
+            child: Column(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Recent Transaction',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).backgroundColor,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          'See All',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ))
+                ],
+              ),
+              ...transactions.map(
+                (transaction) {
+                  return TransactionCard(transaction: transaction);
+                },
+              ).toList()
+            ]),
           ),
         ],
       ),

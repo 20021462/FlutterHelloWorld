@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/back_end/group_money.dart';
-import 'package:hello_world/back_end/transaction.dart';
-import 'package:intl/intl.dart';
-import 'back_end/moma_user.dart';
+import 'package:hello_world/module/group_money.dart';
+import 'package:hello_world/module/transaction.dart';
+import 'package:hello_world/widget/transaction_card.dart';
+import 'module/moma_user.dart';
 
 // ignore: must_be_immutable
 class ReportingPage extends StatefulWidget {
@@ -17,15 +17,10 @@ class ReportingPage extends StatefulWidget {
 List<String> monthList = <String>[];
 DateTime now = DateTime.now();
 List<Transaction> transactions = [
-  Transaction(83000, DateTime.now(), FOOD, 'Pizza'),
-  Transaction(100000, DateTime.now(), GASOLINE_EXPENSES, 'Gas'),
-  Transaction(2000000, DateTime.now(), RENT, 'Rent'),
-  Transaction(12000000, DateTime.now(), SALARY, 'Salary'),
-  Transaction(60000, DateTime.now(), HOSPITAL, 'Hospital'),
-  Transaction(700000, DateTime.now(), EDUCATION, ''),
-  Transaction(100000, DateTime.now(), PETS, ''),
-  Transaction(320000, DateTime.now(), SPORTS, ''),
-  Transaction(230000, DateTime.now(), BILLS, ''),
+  Transaction(200.00, DateTime.now(), FOOD, 'Pizza'),
+  Transaction(20.18, DateTime.now(), GASOLINE_EXPENSES, 'Gas'),
+  Transaction(1000.00, DateTime.now(), RENT, 'Rent'),
+  Transaction(5000.00, DateTime.now(), SALARY, 'Salary'),
 ];
 
 class _ReportingPageState extends State<ReportingPage> {
@@ -109,6 +104,7 @@ class _ReportingPageState extends State<ReportingPage> {
         body: ListView(
           children: [
             Container(
+              color: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
@@ -154,102 +150,7 @@ class _ReportingPageState extends State<ReportingPage> {
                   // ignore: sdk_version_ui_as_code
                   ...transactions.map(
                     (transaction) {
-                      return Container(
-                        height: 110,
-                        margin: const EdgeInsets.symmetric(vertical: 5),
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade100,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 70,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                color:
-                                    groupMoneyList[transaction.getGroupMoney()]
-                                        .background,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Icon(
-                                groupMoneyList[transaction.getGroupMoney()]
-                                    .icon,
-                                color:
-                                    groupMoneyList[transaction.getGroupMoney()]
-                                        .color,
-                                size: 40,
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.all(10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    groupMoneyList[transaction.getGroupMoney()]
-                                        .name,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 17,
-                                    ),
-                                  ),
-                                  Text(
-                                    transaction.getNote(),
-                                    style: const TextStyle(
-                                      color: Colors.black38,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 15,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            const Expanded(child: SizedBox()),
-                            Container(
-                              margin: const EdgeInsets.all(10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  groupMoneyList[transaction.getGroupMoney()]
-                                              .type ==
-                                          'OUTCOME'
-                                      ? Text(
-                                          '- ${NumberFormat("#,###").format(transaction.getMoney())}đ',
-                                          style: const TextStyle(
-                                            color: Colors.red,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 17,
-                                          ),
-                                        )
-                                      : Text(
-                                          '+ ${NumberFormat("#,###").format(transaction.getMoney())}đ',
-                                          style: const TextStyle(
-                                            color: Colors.green,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 17,
-                                          ),
-                                        ),
-                                  Text(
-                                    DateFormat.Hm()
-                                        .format(transaction.getTime()),
-                                    style: const TextStyle(
-                                      color: Colors.black38,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 15,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
+                      return TransactionCard(transaction: transaction);
                     },
                   ).toList()
                 ],
