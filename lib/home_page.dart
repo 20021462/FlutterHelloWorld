@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/adding_page.dart';
 import 'package:hello_world/login_page/login_page.dart';
-import 'package:hello_world/planning_page.dart';
+import 'package:hello_world/budget_page.dart';
+import 'package:hello_world/profile_page/profile_page.dart';
 import 'package:hello_world/reporting_page.dart';
 import 'package:hello_world/transaction_page.dart';
 import 'module/moma_user.dart';
@@ -120,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                     minWidth: 90,
                     onPressed: () {
                       setState(() {
-                        currentScreen = PlanningPage(appUser: appUser);
+                        currentScreen = BudgetPage(appUser: appUser);
                         currentTab = 3;
                       });
                     },
@@ -144,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                     minWidth: 90,
                     onPressed: () {
                       setState(() {
-                        currentScreen = LoginPage(appUser: appUser);
+                        currentScreen = ProfilePage(appUser: appUser);
                         currentTab = 4;
                       });
                     },
