@@ -39,7 +39,7 @@ class ProfileMenu extends StatelessWidget {
               child: Icon(
                 icon,
                 color: logout? Color(0xFFFD3C4A):mainColor,
-                size: 25,
+                size: 30,
               ),
             ),
             const SizedBox(width: 20),

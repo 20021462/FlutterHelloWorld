@@ -92,8 +92,8 @@ class ProfilePic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
-      width: 100,
+      height: 98,
+      width: 90,
       child: Stack(
         fit: StackFit.expand,
         clipBehavior: Clip.none,
@@ -102,25 +102,25 @@ class ProfilePic extends StatelessWidget {
             backgroundColor: Colors.black45,
             backgroundImage: AssetImage('assets/images/logo.png'),
           ),
-          Positioned(
-            right: -16,
-            bottom: 0,
-            child: SizedBox(
-              height: 46,
-              width: 46,
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    side: const BorderSide(color: Colors.white),
-                  ),
-                  backgroundColor: const Color(0xFFF5F6F9),
-                ),
-                onPressed: () {},
-                child: const Icon(Icons.add_a_photo, color: Colors.black,),
-              ),
-            ),
-          )
+          // Positioned(
+          //   right: -10,
+          //   bottom: 0,
+          //   child: SizedBox(
+          //     height: 35,
+          //     width: 35,
+          //     child: TextButton(
+          //       style: TextButton.styleFrom(
+          //         shape: RoundedRectangleBorder(
+          //           borderRadius: BorderRadius.circular(50),
+          //           side: const BorderSide(color: Colors.white),
+          //         ),
+          //         backgroundColor: const Color(0xFFF5F6F9),
+          //       ),
+          //       onPressed: () {},
+          //       child: const Icon(Icons.edit, color: Colors.black,size: 20,),
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );

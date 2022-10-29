@@ -5,6 +5,7 @@ import 'group_money.dart';
 class MomaUser {
   String gmail;
   List<Transaction> transactions;
+  String userName;
   // ignore: non_constant_identifier_names
   int MAX_ID = 0;
   double currentMoney = 0;

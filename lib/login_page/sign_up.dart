@@ -122,22 +122,9 @@ class SignupPageState extends State<SignupPage> {
                       )
                   ),
                   const SizedBox(height: 20,),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xff7f3dff),
-                        minimumSize: const Size(380, 65),
-                        shape: shape,
-                      ),
-                      onPressed: () async {
-                        _signup();
-                      },
-                      child: const Text(
-                        "Sign up",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),)
-                  ),
+                  buildButton("Sign up", sizeType2, colorType1, () async {
+                    _signup();
+                  },)
                 ],
               ),
             )

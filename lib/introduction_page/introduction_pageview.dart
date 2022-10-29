@@ -119,41 +119,20 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
               ),
             ),
             const SizedBox(height: 10,),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xff7f3dff),
-                  minimumSize: const Size(370,56),
-                  shape: shape,
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const SignupPage()),
-                  );
-                },
-                child: const Text(
-                  "Sign Up",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),)
+            buildButton("Sign Up", sizeType1,
+              colorType1,
+                  () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => SignupPage()),);
+              },
             ),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: const Color(0xff7f3dff),
-                  backgroundColor: Colors.grey.shade300,
-                  minimumSize: const Size(370,56),
-                  shape: shape,
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => LoginPage()),
-                  );
-                },
-                child: const Text("Login",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold
-                  ),)
+            buildButton("Login", sizeType1,
+              colorType2,
+
+                  () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => LoginPage()),);
+              },
             ),
           ],
         ),

@@ -24,7 +24,8 @@ class ResetPasswordState extends State<ResetPassword> {
       setState(() {
         success = 1;
         Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => ResetPasswordEmail(email: _emailController.text))
+            MaterialPageRoute(builder: (context) =>
+                ResetPasswordEmail(email: _emailController.text))
         );
       });
     } on FirebaseAuthException catch (e) {
@@ -63,7 +64,7 @@ class ResetPasswordState extends State<ResetPassword> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              color:Colors.white,
+              color: Colors.white,
               alignment: Alignment.center,
               padding: const EdgeInsets.fromLTRB(20, 100, 20, 0),
               child: const Text(
@@ -74,7 +75,7 @@ class ResetPasswordState extends State<ResetPassword> {
               ),
             ),
             Container(
-              color:Colors.white,
+              color: Colors.white,
               padding: const EdgeInsets.only(top: 50, left: 20, right: 30),
               child: Column(
                 children: <Widget>[
@@ -107,22 +108,9 @@ class ResetPasswordState extends State<ResetPassword> {
                       )
                   ),
                   const SizedBox(height: 10,),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xff7f3dff),
-                        minimumSize: const Size(380, 65),
-                        shape: shape,
-                      ),
-                      onPressed: () async {
-                        _reset();
-                      },
-                      child: const Text(
-                        "Continue",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),)
-                  ),
+                  buildButton("Continue", sizeType2, colorType1, () async {
+                    _reset();
+                  }),
 
                   //const SizedBox(height: 15,),
                   // Row(
