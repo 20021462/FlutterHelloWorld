@@ -109,7 +109,6 @@ class _ReportingPageState extends State<ReportingPage> {
               child: Column(
                 children: [
                   Container(
-                    height: 60,
                     margin: const EdgeInsets.only(top: 10, bottom: 20),
                     decoration: BoxDecoration(
                       color: const Color(0xFFEEE5FF),
