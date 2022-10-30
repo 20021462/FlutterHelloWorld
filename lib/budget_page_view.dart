@@ -25,7 +25,7 @@ class _BudgetPageViewState extends State<BudgetPageView> {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: Column(
-        children: [buildButton("Create a budget", sizeType2, () {})],
+        children: [buildButton("Create a budget", sizeType2, colorType1,() {},)],
       ),
     );
   }

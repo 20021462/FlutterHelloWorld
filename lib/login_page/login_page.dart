@@ -4,8 +4,8 @@ import 'package:hello_world/home_page.dart';
 import 'package:hello_world/introduction_page/introduction_pageview.dart';
 import 'package:hello_world/login_page/reset_password.dart';
 import 'package:hello_world/login_page/sign_up.dart';
-import 'package:hello_world/main.dart';
 
+import '../design_system.dart';
 import '../module/moma_user.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -143,22 +143,25 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xff7f3dff),
-                        minimumSize: const Size(380, 65),
-                        shape: shape,
-                      ),
-                      onPressed: () async {
-                        _singIn();
-                      },
-                      child: const Text(
-                        "Login",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )),
+                  buildButton("Login", sizeType2, colorType1, () async {
+                    _singIn();
+                  },),
+                  // ElevatedButton(
+                  //     style: ElevatedButton.styleFrom(
+                  //       backgroundColor: const Color(0xff7f3dff),
+                  //       minimumSize: const Size(380, 65),
+                  //       shape: shape,
+                  //     ),
+                  //     onPressed: () async {
+                  //       _singIn();
+                  //     },
+                  //     child: const Text(
+                  //       "Login",
+                  //       style: TextStyle(
+                  //         fontSize: 20,
+                  //         fontWeight: FontWeight.bold,
+                  //       ),
+                  //     )),
                   const SizedBox(
                     height: 25,
                   ),
@@ -167,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const ResetPassword()));
                     },
-                    child: const Text(
+                    child: Text(
                       'Forgot Password',
                       style: TextStyle(
                         color: mainColor,
@@ -193,7 +196,7 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const SignupPage()));
                         },
-                        child: const Text('Sign Up',
+                        child: Text('Sign Up',
                             style: TextStyle(
                               color: mainColor,
                               fontWeight: FontWeight.bold,

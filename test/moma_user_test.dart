@@ -1,4 +1,4 @@
-//./genhtml.perl ./coverage/lcov.info -o coverage/html
+//git bash: $ ./genhtml.perl ./coverage/lcov.info -o coverage/html
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hello_world/module/moma_user.dart';
@@ -36,7 +36,6 @@ void main() {
                 Transaction(
                     20000, DateTime(2022, 10, 21), GASOLINE_EXPENSES, ""))
           });
-
   user.showTransactions();
 
   test('getID transaction test', () => {expect(user.findID(0).getID(), 0)});
