@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/adding_page.dart';
-import 'package:hello_world/login_page/login_page.dart';
 import 'package:hello_world/budget_page.dart';
 import 'package:hello_world/profile_page/profile_page.dart';
 import 'package:hello_world/reporting_page.dart';

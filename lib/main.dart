@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hello_world/reporting_page.dart';
 import 'module/moma_user.dart';
-import 'introduction_page/introduction_pageview.dart';
 // const MaterialColor primaryBlack = MaterialColor(
 //   _blackPrimaryValue,
 //   <int, Color>{

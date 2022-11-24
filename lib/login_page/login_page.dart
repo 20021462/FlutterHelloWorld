@@ -143,9 +143,14 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  buildButton("Login", sizeType2, colorType1, () async {
-                    _singIn();
-                  },),
+                  buildButton(
+                    "Login",
+                    sizeType2,
+                    colorType1,
+                    () async {
+                      _singIn();
+                    },
+                  ),
                   // ElevatedButton(
                   //     style: ElevatedButton.styleFrom(
                   //       backgroundColor: const Color(0xff7f3dff),
@@ -170,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const ResetPassword()));
                     },
-                    child: Text(
+                    child: const Text(
                       'Forgot Password',
                       style: TextStyle(
                         color: mainColor,
@@ -196,7 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const SignupPage()));
                         },
-                        child: Text('Sign Up',
+                        child: const Text('Sign Up',
                             style: TextStyle(
                               color: mainColor,
                               fontWeight: FontWeight.bold,
