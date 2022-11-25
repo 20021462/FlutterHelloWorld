@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'module/moma_user.dart';
 import 'reporting_page.dart';
+import 'widget/chart.dart';
 import 'widget/transaction_card.dart';
 
 // ignore: must_be_immutable
@@ -84,9 +85,7 @@ class _TransactionPageState extends State<TransactionPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 25,
-                  ),
+                  const SizedBox(height: 25),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -197,45 +196,58 @@ class _TransactionPageState extends State<TransactionPage> {
             ),
           ),
           Container(
-            color: Colors.white,
-            padding: const EdgeInsets.all(20),
-            child: Column(children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Recent Transaction',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).backgroundColor,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          'See All',
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ))
-                ],
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            child: const Text(
+              'Spend Frequency',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
               ),
-              ...transactions.map(
-                (transaction) {
-                  return TransactionCard(transaction: transaction);
-                },
-              ).toList()
-            ]),
+            ),
+          ),
+          const Chart(),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Recent Transaction',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    TextButton(
+                        onPressed: () {},
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).backgroundColor,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            'See All',
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ))
+                  ],
+                ),
+                ...transactions.map(
+                  (transaction) {
+                    return TransactionCard(transaction: transaction);
+                  },
+                ).toList()
+              ],
+            ),
           ),
         ],
       ),
