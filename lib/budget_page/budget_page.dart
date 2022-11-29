@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'module/moma_user.dart';
+import '../module/moma_user.dart';
 import 'budget_page_view.dart';
-import '../design_system.dart';
+import '../../design_system.dart';
 
 // ignore: must_be_immutable
 class BudgetPage extends StatefulWidget {
-  MomaUser appUser;
-  BudgetPage({Key key, MomaUser appUser}) : super(key: key);
+  final MomaUser appUser;
+  const BudgetPage({Key key, this.appUser}) : super(key: key);
 
   @override
   State<BudgetPage> createState() => _BudgetPageState();
@@ -31,6 +31,23 @@ class _BudgetPageState extends State<BudgetPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: SizedBox(
+          child: FloatingActionButton(
+
+          child: Text("Add", textAlign: TextAlign.center,style: const TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+          ),),
+          onPressed: () {
+            setState(() {
+
+            });
+          },
+        ),),
+      ),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -45,6 +62,7 @@ class _BudgetPageState extends State<BudgetPage> {
             onPressed: () {
               setState(() {
                 pageChanged++;
+                pageController.animateToPage(pageChanged, duration: const Duration(milliseconds: 250),curve: Curves.linear);
               });
             },
           ),
@@ -58,6 +76,8 @@ class _BudgetPageState extends State<BudgetPage> {
               onPressed: () {
                 setState(() {
                   pageChanged--;
+                  pageController.animateToPage(pageChanged, duration: const Duration(milliseconds: 250), curve: Curves.linear);
+
                 });
               },
             )
@@ -75,38 +95,43 @@ class _BudgetPageState extends State<BudgetPage> {
         color: mainColor,
         child: Column(
           children: [
-            Container(
-              height: 150,
-            ),
+            // Container(
+            //   height: 150,
+            // ),
+            SizedBox(height: 150,),
             Expanded(
               child: Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadiusDirectional.vertical(
-                        top: Radius.circular(45)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadiusDirectional.vertical(top: Radius.circular(45)),
                     color: Colors.white,
-                  ),
-                  padding: const EdgeInsets.only(
-                    top: 30,
-                    left: 20,
-                    right: 20,
                   ),
                   child: PageView.builder(
                     reverse: true,
                     controller: pageController,
                     onPageChanged: (index) {
                       setState(() {
-                        pageChanged = index;
+                        pageChanged =index;
+                        pageController.animateToPage(pageChanged, duration: const Duration(milliseconds: 250), curve: Curves.linear);
+
                       });
                     },
                     itemBuilder: (BuildContext context, int index) {
                       return BudgetPageView(
-                        dateTime: dateCount(date, index),
+                        dateTime: dateCount(date, pageChanged),
                         appUser: widget.appUser,
                       );
                     },
                     itemCount: 10,
                   )),
             ),
+            // Container(
+            //   decoration: BoxDecoration(border: Border.all(color: Colors.white), color: Colors.white),
+            //   width: double.infinity,
+            //   padding: EdgeInsets.only(left: 20,right: 20,bottom: 40),
+            //   child: buildButton("Create a budget", sizeType2, colorType1,() {},),
+            //
+            // )
+
           ],
         ),
       ),

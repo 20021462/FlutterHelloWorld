@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/login_page/login_page.dart';
 import 'package:hello_world/login_page/sign_up.dart';
+import 'package:hello_world/module/moma_user.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../design_system.dart';
 
 class IntroductionPageView extends StatefulWidget {
-  const IntroductionPageView({Key key}) : super(key: key);
+  IntroductionPageView({Key key, MomaUser appUser}) : super(key: key);
+  MomaUser appUser;
 
   @override
   State<IntroductionPageView> createState() => _IntroductionPageViewState();
@@ -76,18 +78,18 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
             buildPage(
                 urlImage: 'assets/images/illustrations1.png',
                 title: 'Gain total control of your money',
-                subtitle:
-                    'Become your own money manager and make every cent count'),
+                subtitle: 'Become your own money manager and make every cent count'
+            ),
             buildPage(
                 urlImage: 'assets/images/illustrations2.png',
                 title: 'Know where your money goes',
-                subtitle:
-                    'Track your transaction easily,with categories and financial report'),
+                subtitle: 'Track your transaction easily,with categories and financial report'
+            ),
             buildPage(
                 urlImage: 'assets/images/illustrations3.png',
                 title: 'Planning ahead',
-                subtitle:
-                    'Setup your budget for each category so you in control'),
+                subtitle: 'Setup your budget for each category so you in control'
+            ),
           ],
         ),
       ),
@@ -110,32 +112,28 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
                   dotHeight: 8,
                   dotWidth: 8,
                 ),
-                onDotClicked: (index) => controller.animateToPage(index,
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeIn),
+
+                onDotClicked: (index) =>
+                    controller.animateToPage(
+                        index,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeIn),
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            buildButton(
-              "Sign Up",
-              sizeType1,
+            const SizedBox(height: 10,),
+            buildButton("Sign Up", sizeType1,
               colorType1,
-              () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const SignupPage()),
-                );
+                  () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => const SignupPage()),);
               },
             ),
-            buildButton(
-              "Login",
-              sizeType1,
+            buildButton("Login", sizeType1,
               colorType2,
-              () {
+
+                  () {
                 Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                );
+                  MaterialPageRoute(builder: (context) => LoginPage(appUser: widget.appUser,)),);
               },
             ),
           ],

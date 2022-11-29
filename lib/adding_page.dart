@@ -3,13 +3,13 @@ import 'package:hello_world/module/group_money.dart';
 import 'package:hello_world/module/moma_user.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:hello_world/module/transaction.dart';
-import 'package:hello_world/reporting_page.dart';
+import 'package:hello_world/transaction_page.dart';
 
 // ignore: must_be_immutable
 class AddingPage extends StatefulWidget {
-  MomaUser appUser;
+  final MomaUser appUser;
 
-  AddingPage({Key key, MomaUser appUser}) : super(key: key);
+  const AddingPage({Key key, this.appUser}) : super(key: key);
 
   @override
   State<AddingPage> createState() => _AddingPageState();
@@ -20,7 +20,7 @@ class _AddingPageState extends State<AddingPage> {
 
   var moneyInput = 0.0;
   var descriptionInput = '';
-  var groupInput = groupMoneyList[0].id;
+  var groupInput = categoryList[0].id;
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +135,7 @@ class _AddingPageState extends State<AddingPage> {
                             groupInput = category;
                           });
                         },
-                        items: groupMoneyList.map((group) {
+                        items: categoryList.map((group) {
                           return DropdownMenuItem(
                             alignment: AlignmentDirectional.center,
                             value: group.id,
@@ -193,8 +193,9 @@ class _AddingPageState extends State<AddingPage> {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          transactions.add(Transaction(
-                              moneyInput, date, groupInput, descriptionInput));
+                          print(widget.appUser);
+                          // widget.appUser.addTransaction(Transaction(
+                          //     moneyInput, date, groupInput, descriptionInput));
                         },
                         child: const Text(
                           'Continue',

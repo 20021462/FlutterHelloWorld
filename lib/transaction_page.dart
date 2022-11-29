@@ -1,256 +1,161 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:hello_world/module/group_money.dart';
+import 'package:hello_world/module/transaction.dart';
+import 'package:hello_world/widget/transaction_card.dart';
 import 'module/moma_user.dart';
-import 'reporting_page.dart';
-import 'widget/chart.dart';
-import 'widget/transaction_card.dart';
 
 // ignore: must_be_immutable
 class TransactionPage extends StatefulWidget {
-  MomaUser appUser;
+  final MomaUser appUser;
 
-  TransactionPage({Key key, MomaUser appUser}) : super(key: key);
+  const TransactionPage({Key key, this.appUser}) : super(key: key);
 
   @override
   State<TransactionPage> createState() => _TransactionPageState();
 }
 
+List<String> monthList = <String>[];
+DateTime now = DateTime.now();
+List<Transaction> transactions = [
+  Transaction(200.00, DateTime.now(), FOOD, 'Pizza'),
+  Transaction(20.18, DateTime.now(), GASOLINE_EXPENSES, 'Gas'),
+  Transaction(1000.00, DateTime.now(), RENT, 'Rent'),
+  Transaction(5000.00, DateTime.now(), SALARY, 'Salary'),
+];
+
 class _TransactionPageState extends State<TransactionPage> {
+  String monthChoosen = monthList[0];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: ListView(
-        padding: const EdgeInsets.all(0),
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(width: 2.0),
-              borderRadius: const BorderRadius.vertical(
-                bottom: Radius.circular(40),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          toolbarHeight: 64,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                height: 45,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    style: BorderStyle.solid,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
+                child: DropdownButton(
+                  alignment: AlignmentDirectional.center,
+                  iconSize: 35,
+                  underline: const SizedBox(),
+                  elevation: 3,
+                  icon: const Icon(
+                    Icons.expand_more,
+                    color: Color(0xFF7F3DFF),
+                  ),
+                  value: monthChoosen,
+                  onChanged: (value) {
+                    setState(() {
+                      monthChoosen = value;
+                    });
+                  },
+                  items: monthList.map((month) {
+                    return DropdownMenuItem(
+                      alignment: Alignment.center,
+                      value: month,
+                      child: Text(
+                        month,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
               ),
-              gradient: const LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: <Color>[
-                  Color(0xFFFFF6E5),
-                  Color(0xFFFEFBF5),
-                ],
-              ),
-            ),
-            child: SafeArea(
+              Container(
+                width: 45,
+                height: 45,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: Colors.black,
+                    style: BorderStyle.solid,
+                    width: 1.0,
+                  ),
+                ),
+                child: IconButton(
+                  padding: const EdgeInsets.all(0),
+                  color: Colors.black,
+                  icon: const Icon(
+                    Icons.filter_list,
+                    size: 35,
+                  ),
+                  onPressed: () {},
+                ),
+              )
+            ],
+          ),
+        ),
+        body: ListView(
+          children: [
+            Container(
+              color: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 64,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.account_circle,
-                              color: Theme.of(context).primaryColor,
-                              size: 30,
-                            )),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.notifications,
-                            color: Theme.of(context).primaryColor,
-                            size: 30,
-                          ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 10, bottom: 20),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFEEE5FF),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            Text(
+                              'See your financial report',
+                              style: TextStyle(
+                                color: Color(0xFF7F3DFF),
+                                fontSize: 16,
+                              ),
+                            ),
+                            Icon(Icons.arrow_forward_ios,
+                                color: Color(0xFF7F3DFF)),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
                   Container(
-                    alignment: Alignment.topCenter,
+                    alignment: AlignmentDirectional.centerStart,
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: const Text(
-                      'Account Balance',
+                      'Today',
                       style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    alignment: Alignment.topCenter,
-                    child: Text(
-                      '\$${NumberFormat("#,###.##").format(9400)}',
-                      style: const TextStyle(
+                        fontSize: 22,
                         fontWeight: FontWeight.w600,
-                        fontSize: 40,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 25),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 160,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF00A86B),
-                          borderRadius: BorderRadius.circular(27),
-                        ),
-                        padding: const EdgeInsets.all(10),
-                        child: Row(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.attach_money),
-                                color: const Color(0xFF00A86B),
-                                iconSize: 32,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'Income',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                Text(
-                                  '\$${NumberFormat("#,###.##").format(100.200)}',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      Container(
-                        width: 160,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFD3C4A),
-                          borderRadius: BorderRadius.circular(27),
-                        ),
-                        padding: const EdgeInsets.all(10),
-                        child: Row(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.money_off),
-                                color: const Color(0xFFFD3C4A),
-                                iconSize: 32,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'Expenses',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                const SizedBox(height: 5),
-                                Text(
-                                  '\$${NumberFormat("#,###.##").format(100.200)}',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(height: 25),
+                  // ignore: sdk_version_ui_as_code
+                  ...transactions.map(
+                    (transaction) {
+                      return TransactionCard(transaction: transaction);
+                    },
+                  ).toList()
                 ],
               ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-            child: const Text(
-              'Spend Frequency',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-          const Chart(),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Recent Transaction',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    TextButton(
-                        onPressed: () {},
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).backgroundColor,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Text(
-                            'See All',
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ))
-                  ],
-                ),
-                ...transactions.map(
-                  (transaction) {
-                    return TransactionCard(transaction: transaction);
-                  },
-                ).toList()
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ));
   }
 }

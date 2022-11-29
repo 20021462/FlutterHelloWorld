@@ -5,7 +5,6 @@ import 'group_money.dart';
 class MomaUser {
   String gmail;
   List<Transaction> transactions;
-  String userName;
   // ignore: non_constant_identifier_names
   int MAX_ID = 0;
   double currentMoney = 0;
@@ -36,7 +35,7 @@ class MomaUser {
 
   void addTransaction(Transaction newTransaction) {
     newTransaction.setID(MAX_ID++);
-    if (groupMoneyList[newTransaction.getGroupMoney()].type == INCOME) {
+    if (categoryList[newTransaction.getGroupMoney()].type == INCOME) {
       currentMoney += newTransaction.getMoney();
     } else {
       currentMoney -= newTransaction.getMoney();
@@ -80,9 +79,10 @@ class MomaUser {
   }
 
   void showTransactions() {
+    print("number of transactions:${transactions.length}");
     for (Transaction i in transactions) {
       // ignore: avoid_print
-      print(i);
+      print(i.show());
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 const mainColor = Color(0xff7f3dff);
 final shape = RoundedRectangleBorder(
   borderRadius: BorderRadius.circular(20),
+
 );
 
 const Size sizeType1 = Size(370, 56);
