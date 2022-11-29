@@ -24,12 +24,12 @@ class TransactionCard extends StatelessWidget {
             height: 70,
             width: 70,
             decoration: BoxDecoration(
-              color: groupMoneyList[transaction.getGroupMoney()].background,
+              color: categoryList[transaction.getGroupMoney()].background,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Icon(
-              groupMoneyList[transaction.getGroupMoney()].icon,
-              color: groupMoneyList[transaction.getGroupMoney()].color,
+              categoryList[transaction.getGroupMoney()].icon,
+              color: categoryList[transaction.getGroupMoney()].color,
               size: 40,
             ),
           ),
@@ -40,7 +40,7 @@ class TransactionCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  groupMoneyList[transaction.getGroupMoney()].name,
+                  categoryList[transaction.getGroupMoney()].name,
                   style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 17,
@@ -64,7 +64,7 @@ class TransactionCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                groupMoneyList[transaction.getGroupMoney()].type == 'OUTCOME'
+                categoryList[transaction.getGroupMoney()].type == 'OUTCOME'
                     ? Text(
                         '- \$${NumberFormat("#,###.##").format(transaction.getMoney())}',
                         style: const TextStyle(

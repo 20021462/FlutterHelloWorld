@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hello_world/home_page.dart';
+import 'package:hello_world/main_page.dart';
 import 'package:hello_world/login_page/login_page.dart';
 import '../design_system.dart';
 import '../module/moma_user.dart';
@@ -121,7 +121,7 @@ class VerifyScreenState extends State<VerifyScreen> {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => HomePage(appUser: MomaUser(widget.email))));
+              builder: (context) => MainPage(appUser: MomaUser(widget.email))));
       // Navigator.of(context).pushNamed('/main_screen');
     }
   }

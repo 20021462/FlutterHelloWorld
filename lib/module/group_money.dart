@@ -20,7 +20,7 @@ const int INVESTMENT = 10;
 const int SALARY = 11;
 const int OTHER_INCOME = 12;
 
-class GroupMoney {
+class Category {
   int id;
   String name;
   String type;
@@ -28,35 +28,34 @@ class GroupMoney {
   Color color;
   Color background;
 
-  GroupMoney(
+  Category(
       this.id, this.name, this.type, this.icon, this.color, this.background);
 }
 
-var groupMoneyList = [
-  GroupMoney(UNDEFINED, "Pick a money group", INCOME, Icons.question_mark,
+var categoryList = [
+  Category(UNDEFINED, "Pick a money group", INCOME, Icons.question_mark,
       Colors.white, Colors.yellow),
-  GroupMoney(
+  Category(
       FOOD, "Food&Drink", OUTCOME, Icons.restaurant, Colors.grey, Colors.white),
-  GroupMoney(GASOLINE_EXPENSES, "Gasoline", OUTCOME, Icons.local_gas_station,
+  Category(GASOLINE_EXPENSES, "Gasoline", OUTCOME, Icons.local_gas_station,
       Colors.red, Colors.red.shade100),
-  GroupMoney(RENT, "Rent", OUTCOME, Icons.home, Colors.white,
+  Category(RENT, "Rent", OUTCOME, Icons.home, Colors.white,
       Colors.lightGreen.shade400),
-  GroupMoney(HOSPITAL, "Hospital", OUTCOME, Icons.local_hospital, Colors.white,
+  Category(HOSPITAL, "Hospital", OUTCOME, Icons.local_hospital, Colors.white,
       Colors.red),
-  GroupMoney(EDUCATION, "Education", OUTCOME, Icons.school,
+  Category(EDUCATION, "Education", OUTCOME, Icons.school,
       Colors.indigo.shade800, Colors.cyan.shade100),
-  GroupMoney(
-      PETS, "Pets", OUTCOME, Icons.pets, Colors.pink.shade100, Colors.white),
-  GroupMoney(ENTERTAINMENT, "Entertainment", OUTCOME, Icons.sports_esports,
+  Category(PETS, "Pets", OUTCOME, Icons.pets, Colors.pink.shade100, Colors.white),
+  Category(ENTERTAINMENT, "Entertainment", OUTCOME, Icons.sports_esports,
       Colors.white, Colors.deepOrange),
-  GroupMoney(SPORTS, "Sports", OUTCOME, Icons.sports_basketball, Colors.orange,
+  Category(SPORTS, "Sports", OUTCOME, Icons.sports_basketball, Colors.orange,
       Colors.orange.shade100),
-  GroupMoney(BILLS, "Bills", OUTCOME, Icons.receipt, Colors.white,
+  Category(BILLS, "Bills", OUTCOME, Icons.receipt, Colors.white,
       Colors.blue.shade300),
-  GroupMoney(INVESTMENT, "Investment", OUTCOME, Icons.trending_up,
+  Category(INVESTMENT, "Investment", OUTCOME, Icons.trending_up,
       Colors.yellow.shade400, Colors.blue),
-  GroupMoney(SALARY, "Salary", INCOME, Icons.payments, Colors.green,
+  Category(SALARY, "Salary", INCOME, Icons.payments, Colors.green,
       Colors.green.shade100),
-  GroupMoney(OTHER_INCOME, "Other income", INCOME, Icons.paid, Colors.green,
+  Category(OTHER_INCOME, "Other income", INCOME, Icons.paid, Colors.green,
       Colors.green.shade100),
 ];

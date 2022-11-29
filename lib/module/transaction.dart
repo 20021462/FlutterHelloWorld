@@ -1,57 +1,64 @@
 import 'dart:core';
 
-class Transaction {
-  int _index;
-  double _money;
-  DateTime _time;
-  int _groupMoney;
-  String _note;
+import 'package:hello_world/module/group_money.dart';
 
-  Transaction(this._money, this._time, this._groupMoney, this._note) {
-    _index = -1;
+class Transaction {
+  int index;
+  double money;
+  DateTime time;
+  int category;
+  String note;
+
+  Transaction(this.money, this.time, this.category, this.note) {
+    index = -1;
   }
+
   int getID() {
-    return _index;
+    return index;
   }
 
   double getMoney() {
-    return _money;
+    return money;
   }
 
   int getGroupMoney() {
-    return _groupMoney;
+    return category;
   }
 
   String getNote() {
-    return _note;
+    return note;
   }
 
   DateTime getTime() {
-    return _time;
+    return time;
   }
 
   void setID(int index) {
-    _index = index;
+    this.index = index;
   }
 
   void setMoney(double money) {
-    _money = money;
+    money = money;
   }
 
   void setGroupMoney(int groupMoney) {
-    _groupMoney = groupMoney;
+    category = groupMoney;
   }
 
   void setNote(String note) {
-    _note = note;
+    note = note;
   }
 
   void setTime(DateTime time) {
-    _time = time;
+    time = time;
   }
 
   bool less(Transaction other) {
-    return _time.isBefore(other.getTime());
+    return time.isBefore(other.getTime());
+  }
+
+  String show() {
+    return "id = $index\nmoney = $money\ntime = $DateTime\ncategory = ${categoryList[this.category].name}\nnote = $note";
   }
 
   @override

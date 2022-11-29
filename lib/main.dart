@@ -1,8 +1,11 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
-import 'package:hello_world/home_page.dart';
+import 'package:hello_world/login_page/login_page.dart';
+import 'package:hello_world/main_page.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:hello_world/reporting_page.dart';
+import 'package:hello_world/transaction_page.dart';
 import 'module/moma_user.dart';
 import 'introduction_page/introduction_pageview.dart';
 // const MaterialColor primaryBlack = MaterialColor(
@@ -52,7 +55,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: const Color(0xFFEEE5FF),
         //primarySwatch: Colors.purple,
       ),
-      home: HomePage(),
+      home: IntroductionPageView(appUser: appUser,),
       //home: MainScreen(appUser: appUser,),
       //debugShowCheckedModeBanner: false,
       // routes: <String, WidgetBuilder>{

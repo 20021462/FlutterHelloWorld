@@ -97,8 +97,8 @@ class ProfilePic extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         clipBehavior: Clip.none,
-        children: [
-          const CircleAvatar(
+        children: const [
+          CircleAvatar(
             backgroundColor: Colors.black45,
             backgroundImage: AssetImage('assets/images/logo.png'),
           ),

@@ -12,9 +12,9 @@ final FirebaseAuth auth= FirebaseAuth.instance;
 
 // ignore: must_be_immutable
 class ProfilePage extends StatefulWidget {
-  MomaUser appUser;
+  final MomaUser appUser;
 
-  ProfilePage({Key key,this.appUser}) : super(key: key);
+  const ProfilePage({Key key, this.appUser}) : super(key: key);
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -92,9 +92,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Logout",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                        const Text("Logout",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                         Text("Are you sure you want to logout?", style: TextStyle(fontSize: 16,color: Colors.grey.shade500),),
-                        SizedBox(height: 10,),
+                        const SizedBox(height: 10,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -121,7 +121,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void _logout() {
     auth.signOut();
+    Navigator.of(context).popUntil((route) => route.isFirst);
+
     Navigator.of(context).pushReplacement(
+
         MaterialPageRoute(builder: (context) => LoginPage(appUser: widget.appUser,)));
   }
 

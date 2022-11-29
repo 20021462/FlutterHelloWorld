@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_world/design_system.dart';
 
 class ProfileMenu extends StatelessWidget {
-  ProfileMenu({
+  const ProfileMenu({
     Key key,
     this.text,
     this.icon,
@@ -33,17 +33,17 @@ class ProfileMenu extends StatelessWidget {
               height: 60,
               width: 60,
               decoration: BoxDecoration(
-                color: logout? Color(0xFFFFE2E4):Color(0xFFEEE5FF),
+                color: logout? const Color(0xFFFFE2E4):const Color(0xFFEEE5FF),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Icon(
                 icon,
-                color: logout? Color(0xFFFD3C4A):mainColor,
+                color: logout? const Color(0xFFFD3C4A):mainColor,
                 size: 30,
               ),
             ),
             const SizedBox(width: 20),
-            Expanded(child: Text(text,style:TextStyle(color: Colors.black,fontSize: 16),),),
+            Expanded(child: Text(text,style:const TextStyle(color: Colors.black,fontSize: 16),),),
             //const Icon(Icons.arrow_forward_ios,color: Colors.black,),
           ],
         ),

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/login_page/login_page.dart';
 import 'package:hello_world/login_page/sign_up.dart';
+import 'package:hello_world/module/moma_user.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../design_system.dart';
 
 class IntroductionPageView extends StatefulWidget {
-  const IntroductionPageView({Key key}) : super(key: key);
+  IntroductionPageView({Key key, MomaUser appUser}) : super(key: key);
+  MomaUser appUser;
 
   @override
   State<IntroductionPageView> createState() => _IntroductionPageViewState();
@@ -123,7 +125,7 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
               colorType1,
                   () {
                     Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => SignupPage()),);
+                      MaterialPageRoute(builder: (context) => const SignupPage()),);
               },
             ),
             buildButton("Login", sizeType1,
@@ -131,7 +133,7 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
 
                   () {
                 Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => LoginPage()),);
+                  MaterialPageRoute(builder: (context) => LoginPage(appUser: widget.appUser,)),);
               },
             ),
           ],
