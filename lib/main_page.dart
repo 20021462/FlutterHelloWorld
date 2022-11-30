@@ -13,7 +13,7 @@ class MainPage extends StatefulWidget {
 
   MainPage({Key key, this.appUser}) : super(key: key);
   MainPage.withCurrentTab({Key key, this.appUser, this.currentTab}) : super(key: key);
-
+  
   @override
   // ignore: no_logic_in_create_state
   State<MainPage> createState() => _MainPageState(appUser, currentTab);

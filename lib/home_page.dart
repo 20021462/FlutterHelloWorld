@@ -47,7 +47,15 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => MainPage.withCurrentTab(
+                                      appUser: widget.appUser,
+                                      currentTab: 4,
+                                    )));
+                              });
+                            },
                             icon: Icon(
                               Icons.account_circle,
                               color: Theme.of(context).primaryColor,
