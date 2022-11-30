@@ -4,37 +4,37 @@ import 'package:hello_world/budget_page/budget_page.dart';
 import 'package:hello_world/profile_page/profile_page.dart';
 import 'package:hello_world/transaction_page.dart';
 import 'package:hello_world/home_page.dart';
-import 'module/group_money.dart';
 import 'module/moma_user.dart';
-import 'module/transaction.dart';
 
 // ignore: must_be_immutable
 class MainPage extends StatefulWidget {
   MomaUser appUser;
+  int currentTab = 0;
 
   MainPage({Key key, this.appUser}) : super(key: key);
+  MainPage.withCurrentTab({Key key, this.appUser, this.currentTab}) : super(key: key);
 
   @override
   // ignore: no_logic_in_create_state
-  State<MainPage> createState() => _MainPageState(appUser);
+  State<MainPage> createState() => _MainPageState(appUser, currentTab);
 }
 
 class _MainPageState extends State<MainPage> {
-
-  int currentTab = 0;
-  final PageStorageBucket bucket = PageStorageBucket();
+  int currentTab;
   Widget currentScreen;
   List<StatefulWidget> screens;
+  final PageStorageBucket bucket = PageStorageBucket();
 
-  _MainPageState(MomaUser appUser){
+
+  _MainPageState(MomaUser appUser, this.currentTab){
     screens = [
-      HomePage(appUser: appUser,),
+      HomePage(appUser: appUser),
       TransactionPage(appUser: appUser),
       AddingPage(appUser: appUser),
       BudgetPage(appUser: appUser),
       ProfilePage(appUser: appUser),
     ];
-    currentScreen = screens[0];
+    currentScreen = screens[currentTab];
   }
 
   @override
@@ -53,7 +53,6 @@ class _MainPageState extends State<MainPage> {
             setState(() {
               currentTab = 2;
               currentScreen = screens[currentTab];
-
             });
           },
         ),

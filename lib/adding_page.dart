@@ -30,17 +30,17 @@ class _AddingPageState extends State<AddingPage> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           toolbarHeight: 64,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              size: 30,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          ),
+          // leading: IconButton(
+          //   icon: const Icon(
+          //     Icons.arrow_back,
+          //     size: 30,
+          //     color: Colors.white,
+          //   ),
+          //   onPressed: () {},
+          // ),
           centerTitle: true,
           title: const Text(
-            'Expense',
+            'Transaction',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,

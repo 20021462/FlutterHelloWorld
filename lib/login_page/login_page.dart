@@ -147,22 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                     buildButton("Login", large, colorType1, () async {
                       _singIn();
                     },),
-                    // ElevatedButton(
-                    //     style: ElevatedButton.styleFrom(
-                    //       backgroundColor: const Color(0xff7f3dff),
-                    //       minimumSize: const Size(380, 65),
-                    //       shape: shape,
-                    //     ),
-                    //     onPressed: () async {
-                    //       _singIn();
-                    //     },
-                    //     child: const Text(
-                    //       "Login",
-                    //       style: TextStyle(
-                    //         fontSize: 20,
-                    //         fontWeight: FontWeight.bold,
-                    //       ),
-                    //     )),
+
                     const SizedBox(
                       height: 25,
                     ),

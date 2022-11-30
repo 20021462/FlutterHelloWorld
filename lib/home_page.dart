@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'main_page.dart';
 import 'module/moma_user.dart';
-import 'transaction_page.dart';
 import 'widget/chart.dart';
 import 'widget/transaction_card.dart';
 
@@ -222,7 +222,15 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => MainPage.withCurrentTab(
+                                  appUser: widget.appUser,
+                                  currentTab: 1,
+                                )));
+                          });
+                        },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 8),
