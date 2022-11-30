@@ -58,7 +58,7 @@ class Transaction {
   }
 
   String show() {
-    return "id = $index\nmoney = $money\ntime = $DateTime\ncategory = ${categoryList[this.category].name}\nnote = $note";
+    return "id = $index\nmoney = $money\ntime = $DateTime\ncategory = ${categoryList[category].name}\nnote = $note";
   }
 
   @override

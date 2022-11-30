@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/adding_page.dart';
+import 'package:hello_world/adding_page/adding_page.dart';
 import 'package:hello_world/budget_page/budget_page.dart';
 import 'package:hello_world/profile_page/profile_page.dart';
 import 'package:hello_world/transaction_page.dart';
 import 'package:hello_world/home_page.dart';
-import 'module/group_money.dart';
 import 'module/moma_user.dart';
-import 'module/transaction.dart';
 
 // ignore: must_be_immutable
 class MainPage extends StatefulWidget {
@@ -20,15 +18,16 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-
   int currentTab = 0;
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen;
   List<StatefulWidget> screens;
 
-  _MainPageState(MomaUser appUser){
+  _MainPageState(MomaUser appUser) {
     screens = [
-      HomePage(appUser: appUser,),
+      HomePage(
+        appUser: appUser,
+      ),
       TransactionPage(appUser: appUser),
       AddingPage(appUser: appUser),
       BudgetPage(appUser: appUser),
@@ -53,7 +52,6 @@ class _MainPageState extends State<MainPage> {
             setState(() {
               currentTab = 2;
               currentScreen = screens[currentTab];
-
             });
           },
         ),
@@ -131,7 +129,6 @@ class _MainPageState extends State<MainPage> {
                       setState(() {
                         currentTab = 3;
                         currentScreen = screens[currentTab];
-
                       });
                     },
                     child: Column(
@@ -156,7 +153,6 @@ class _MainPageState extends State<MainPage> {
                       setState(() {
                         currentTab = 4;
                         currentScreen = screens[currentTab];
-
                       });
                     },
                     child: Column(

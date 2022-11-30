@@ -221,24 +221,29 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    TextButton(
-                        onPressed: () {},
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).backgroundColor,
-                            borderRadius: BorderRadius.circular(20),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
                           ),
-                          child: Text(
-                            'See All',
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ))
+                        ),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          Theme.of(context).backgroundColor,
+                        ),
+                        elevation: MaterialStateProperty.all<double>(0),
+                      ),
+                      child: Text(
+                        'See All',
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 ...transactions.map(
