@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/design_system.dart';
 import 'package:hello_world/module/group_money.dart';
 import 'package:hello_world/module/moma_user.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:hello_world/module/transaction.dart';
-import 'package:hello_world/transaction_page.dart';
 
 // ignore: must_be_immutable
 class AddingPage extends StatefulWidget {
@@ -183,30 +183,48 @@ class _AddingPageState extends State<AddingPage> {
                         },
                       ),
                     ),
-                    Container(
-                      height: 50,
-                      width: double.infinity,
-                      margin: const EdgeInsets.only(top: 70),
-                      decoration: BoxDecoration(
-                        color: Colors.deepPurple.shade400,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: TextButton(
-                        onPressed: () {
-                          print(widget.appUser);
-                          // widget.appUser.addTransaction(Transaction(
-                          //     moneyInput, date, groupInput, descriptionInput));
-                        },
-                        child: const Text(
-                          'Continue',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
+                    buildButton("Continue", large, colorType1, () {
+                      if(groupInput == categoryList[0].id) return;
+                      Transaction newTransaction = Transaction(moneyInput, date, groupInput, descriptionInput);
+                      widget.appUser.addTransaction(newTransaction);
+                      widget.appUser.showTransactions();
+                      setState(() {
+                        moneyInput = 0.0;
+                        descriptionInput = '';
+                        groupInput = categoryList[0].id;
+                      });
+                      }
                     ),
+                    // Container(
+                    //   height: 50,
+                    //   width: double.infinity,
+                    //   margin: const EdgeInsets.only(top: 70),
+                    //   decoration: BoxDecoration(
+                    //     color: Colors.deepPurple.shade400,
+                    //     borderRadius: BorderRadius.circular(20),
+                    //   ),
+                    //   child: TextButton(
+                    //     onPressed: () {
+                    //       if(groupInput == categoryList[0].id) return;
+                    //       Transaction newTransaction = Transaction(moneyInput, date, groupInput, descriptionInput);
+                    //       widget.appUser.addTransaction(newTransaction);
+                    //       widget.appUser.showTransactions();
+                    //       setState(() {
+                    //         moneyInput = 0.0;
+                    //         descriptionInput = '';
+                    //         groupInput = categoryList[0].id;
+                    //       });
+                    //     },
+                    //     child: const Text(
+                    //       'Continue',
+                    //       style: TextStyle(
+                    //         fontWeight: FontWeight.w600,
+                    //         color: Colors.white,
+                    //         fontSize: 18,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

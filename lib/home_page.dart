@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                     margin: const EdgeInsets.only(top: 10),
                     alignment: Alignment.topCenter,
                     child: Text(
-                      '\$${NumberFormat("#,###.##").format(9400)}',
+                      '\$${NumberFormat("#,###.##").format(widget.appUser.currentMoney)}',
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 40,
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 const SizedBox(height: 5),
                                 Text(
-                                  '\$${NumberFormat("#,###.##").format(100.200)}',
+                                  '\$${NumberFormat("#,###.##").format(widget.appUser.totalIncome)}',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 22,
@@ -176,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 const SizedBox(height: 5),
                                 Text(
-                                  '\$${NumberFormat("#,###.##").format(100.200)}',
+                                  '\$${NumberFormat("#,###.##").format(widget.appUser.totalOutcome)}',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 22,
@@ -241,7 +241,7 @@ class _HomePageState extends State<HomePage> {
                         ))
                   ],
                 ),
-                ...transactions.map(
+                ...widget.appUser.getTransactionList().map(
                   (transaction) {
                     return TransactionCard(transaction: transaction);
                   },

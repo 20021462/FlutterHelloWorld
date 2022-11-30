@@ -16,12 +16,6 @@ class TransactionPage extends StatefulWidget {
 
 List<String> monthList = <String>[];
 DateTime now = DateTime.now();
-List<Transaction> transactions = [
-  Transaction(200.00, DateTime.now(), FOOD, 'Pizza'),
-  Transaction(20.18, DateTime.now(), GASOLINE_EXPENSES, 'Gas'),
-  Transaction(1000.00, DateTime.now(), RENT, 'Rent'),
-  Transaction(5000.00, DateTime.now(), SALARY, 'Salary'),
-];
 
 class _TransactionPageState extends State<TransactionPage> {
   String monthChoosen = monthList[0];
@@ -147,7 +141,7 @@ class _TransactionPageState extends State<TransactionPage> {
                     ),
                   ),
                   // ignore: sdk_version_ui_as_code
-                  ...transactions.map(
+                  ...widget.appUser.getTransactionList().map(
                     (transaction) {
                       return TransactionCard(transaction: transaction);
                     },

@@ -121,14 +121,14 @@ class _IntroductionPageViewState extends State<IntroductionPageView> {
               ),
             ),
             const SizedBox(height: 10,),
-            buildButton("Sign Up", sizeType1,
+            buildButton("Sign Up", medium,
               colorType1,
                   () {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => const SignupPage()),);
               },
             ),
-            buildButton("Login", sizeType1,
+            buildButton("Login", medium,
               colorType2,
 
                   () {

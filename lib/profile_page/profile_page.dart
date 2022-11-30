@@ -81,8 +81,8 @@ class _ProfilePageState extends State<ProfilePage> {
             icon: Icons.logout,
             logout: true,
             press: () {showModalBottomSheet(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(50), topRight: Radius.circular(50)),
                 ),
                 context: context,
                 builder: (BuildContext context){
@@ -98,8 +98,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            buildButton("No", normalSize,colorType2,() {Navigator.pop(context);}),
-                            buildButton("Yes", normalSize,colorType1,() {_logout();})
+                            buildButton("No", half,colorType2,() {Navigator.pop(context);}),
+                            buildButton("Yes", half,colorType1,() {_logout();})
                           ],
                         )
                       ],
@@ -113,11 +113,6 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
-  //
-  // String checkNull(String text){
-  //   if(text!= null) return text;
-  //   return '/email_address/';
-  // }
 
   void _logout() {
     auth.signOut();
