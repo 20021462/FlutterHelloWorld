@@ -54,11 +54,11 @@ class Transaction {
   }
 
   bool after(Transaction other) {
-    return time.compareTo(other.getTime()) >=0;
+    return time.compareTo(other.getTime()) >= 0;
   }
 
   String info() {
-    return "id = $index\nmoney = $money\ntime = ${time}\ncategory = ${categoryList[category].name}\nnote = $note";
+    return "id = $index\nmoney = $money\ntime = $time\ncategory = ${categoryList[category].name}\nnote = $note";
   }
 
   @override

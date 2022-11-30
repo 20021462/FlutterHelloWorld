@@ -40,7 +40,6 @@ class MomaUser {
   }
 
   void addTransaction(Transaction newTransaction) {
-    print("add successfully");
     newTransaction.setID(MAX_ID++);
 
     if (categoryList[newTransaction.getGroupMoney()].type == INCOME) {
@@ -48,7 +47,7 @@ class MomaUser {
     } else {
       totalOutcome += newTransaction.getMoney();
     }
-    currentMoney = totalIncome-totalOutcome;
+    currentMoney = totalIncome - totalOutcome;
 
     if (isTransactionEmpty()) {
       transactions.add(newTransaction);
@@ -88,7 +87,6 @@ class MomaUser {
   }
 
   void showTransactions() {
-    print("number of transactions:${transactions.length}");
     for (Transaction i in transactions) {
       // ignore: avoid_print
       print(i.info());

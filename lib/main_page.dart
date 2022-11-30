@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/adding_page.dart';
+import 'package:hello_world/adding_page/adding_page.dart';
 import 'package:hello_world/budget_page/budget_page.dart';
 import 'package:hello_world/profile_page/profile_page.dart';
 import 'package:hello_world/transaction_page.dart';
@@ -12,8 +12,9 @@ class MainPage extends StatefulWidget {
   int currentTab = 0;
 
   MainPage({Key key, this.appUser}) : super(key: key);
-  MainPage.withCurrentTab({Key key, this.appUser, this.currentTab}) : super(key: key);
-  
+  MainPage.withCurrentTab({Key key, this.appUser, this.currentTab})
+      : super(key: key);
+
   @override
   // ignore: no_logic_in_create_state
   State<MainPage> createState() => _MainPageState(appUser, currentTab);
@@ -25,8 +26,7 @@ class _MainPageState extends State<MainPage> {
   List<StatefulWidget> screens;
   final PageStorageBucket bucket = PageStorageBucket();
 
-
-  _MainPageState(MomaUser appUser, this.currentTab){
+  _MainPageState(MomaUser appUser, this.currentTab) {
     screens = [
       HomePage(appUser: appUser),
       TransactionPage(appUser: appUser),
@@ -130,7 +130,6 @@ class _MainPageState extends State<MainPage> {
                       setState(() {
                         currentTab = 3;
                         currentScreen = screens[currentTab];
-
                       });
                     },
                     child: Column(
@@ -155,7 +154,6 @@ class _MainPageState extends State<MainPage> {
                       setState(() {
                         currentTab = 4;
                         currentScreen = screens[currentTab];
-
                       });
                     },
                     child: Column(

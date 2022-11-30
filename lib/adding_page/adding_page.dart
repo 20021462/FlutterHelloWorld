@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/adding_page/adding_form.dart';
+import 'package:hello_world/design_system.dart';
 import 'package:hello_world/module/group_money.dart';
 import 'package:hello_world/module/moma_user.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:hello_world/module/transaction.dart';
 import 'package:hello_world/scroll_behavior.dart';
 import 'package:intl/intl.dart';
 
@@ -17,8 +19,6 @@ class AddingPage extends StatefulWidget {
 }
 
 class _AddingPageState extends State<AddingPage> {
-  final date = DateTime.now();
-
   var moneyInput = 0.0;
   var descriptionInput = '';
   var groupInput = categoryList[0].id;
@@ -227,36 +227,28 @@ class _AddingPageState extends State<AddingPage> {
                           },
                         ),
                       ),
-                      const SizedBox(height: 30),
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                            Theme.of(context).primaryColor,
-                          ),
-                          fixedSize: MaterialStateProperty.all<Size>(
-                            const Size.fromHeight(56),
-                          ),
-                          elevation: MaterialStateProperty.all<double>(0),
-                        ),
-                        onPressed: () {
-                          //print(widget.appUser);
-                          // widget.appUser.addTransaction(Transaction(
-                          //     moneyInput, date, groupInput, descriptionInput));
+                      const SizedBox(height: 20),
+                      buildButton(
+                        "Continue",
+                        large,
+                        colorType1,
+                        () {
+                          if (groupInput == categoryList[0].id) return;
+                          Transaction newTransaction = Transaction(
+                            moneyInput,
+                            DateFormat("MM-dd-yyyy hh:mm")
+                                .parse(dateInput.text + ' ' + timeInput.text),
+                            groupInput,
+                            descriptionInput,
+                          );
+                          widget.appUser.addTransaction(newTransaction);
+                          widget.appUser.showTransactions();
+                          setState(() {
+                            moneyInput = 0.0;
+                            descriptionInput = '';
+                            groupInput = categoryList[0].id;
+                          });
                         },
-                        child: const Text(
-                          'Continue',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        ),
                       ),
                     ],
                   ),
