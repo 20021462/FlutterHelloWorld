@@ -8,10 +8,16 @@ class MomaUser {
   // ignore: non_constant_identifier_names
   int MAX_ID = 0;
   double currentMoney = 0;
+  double totalIncome = 0;
+  double totalOutcome = 0;
   String uid = "";
 
   MomaUser(this.gmail) {
     transactions = <Transaction>[];
+  }
+
+  List<Transaction> getTransactionList() {
+    return transactions;
   }
 
   Transaction removeID(int index) {
@@ -34,35 +40,38 @@ class MomaUser {
   }
 
   void addTransaction(Transaction newTransaction) {
+    print("add successfully");
     newTransaction.setID(MAX_ID++);
+
     if (categoryList[newTransaction.getGroupMoney()].type == INCOME) {
-      currentMoney += newTransaction.getMoney();
+      totalIncome += newTransaction.getMoney();
     } else {
-      currentMoney -= newTransaction.getMoney();
+      totalOutcome += newTransaction.getMoney();
     }
+    currentMoney = totalIncome-totalOutcome;
 
     if (isTransactionEmpty()) {
-      transactions.insert(0, newTransaction);
+      transactions.add(newTransaction);
       //updateTransaction(transactions, uid);
       return;
     }
 
-    if (newTransaction.less(transactions[0])) {
+    if (transactions[0].after(newTransaction)) {
       transactions.insert(0, newTransaction);
       //updateTransaction(transactions, uid);
       return;
     }
 
     int length = transactions.length;
-    if (transactions[length - 1].less(newTransaction)) {
+    if (newTransaction.after(transactions[length - 1])) {
       transactions.add(newTransaction);
       //updateTransaction(transactions, uid);
       return;
     }
 
     for (int i = 0; i < length - 1; i++) {
-      if (transactions[i].less(newTransaction) &&
-          newTransaction.less(transactions[i + 1])) {
+      if (newTransaction.after(transactions[i]) &&
+          transactions[i + 1].after(newTransaction)) {
         transactions.insert(i + 1, newTransaction);
         //updateTransaction(transactions, uid);
         return;
@@ -82,7 +91,7 @@ class MomaUser {
     print("number of transactions:${transactions.length}");
     for (Transaction i in transactions) {
       // ignore: avoid_print
-      print(i.show());
+      print(i.info());
     }
   }
 }

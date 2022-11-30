@@ -122,7 +122,7 @@ class SignupPageState extends State<SignupPage> {
                       )
                   ),
                   const SizedBox(height: 20,),
-                  buildButton("Sign up", sizeType2, colorType1, () async {
+                  buildButton("Sign up", large, colorType1, () async {
                     _signup();
                   },)
                 ],

@@ -5,9 +5,9 @@ final shape = RoundedRectangleBorder(
   borderRadius: BorderRadius.circular(20),
 );
 
-const Size sizeType1 = Size(370, 56);
-const Size sizeType2 = Size(380, 65);
-const Size normalSize = Size(180, 65);
+const Size medium = Size(370, 56);
+const Size large = Size(380, 65);
+const Size half = Size(180, 65);
 const bool colorType1 = true;
 const bool colorType2 = false;
 

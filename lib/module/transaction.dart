@@ -38,7 +38,7 @@ class Transaction {
   }
 
   void setMoney(double money) {
-    money = money;
+    this.money = money;
   }
 
   void setGroupMoney(int groupMoney) {
@@ -46,19 +46,19 @@ class Transaction {
   }
 
   void setNote(String note) {
-    note = note;
+    this.note = note;
   }
 
   void setTime(DateTime time) {
     time = time;
   }
 
-  bool less(Transaction other) {
-    return time.isBefore(other.getTime());
+  bool after(Transaction other) {
+    return time.compareTo(other.getTime()) >=0;
   }
 
-  String show() {
-    return "id = $index\nmoney = $money\ntime = $DateTime\ncategory = ${categoryList[category].name}\nnote = $note";
+  String info() {
+    return "id = $index\nmoney = $money\ntime = ${time}\ncategory = ${categoryList[category].name}\nnote = $note";
   }
 
   @override

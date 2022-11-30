@@ -108,7 +108,7 @@ class ResetPasswordState extends State<ResetPassword> {
                       )
                   ),
                   const SizedBox(height: 10,),
-                  buildButton("Continue", sizeType2, colorType1, () async {
+                  buildButton("Continue", large, colorType1, () async {
                     _reset();
                   }),
 
