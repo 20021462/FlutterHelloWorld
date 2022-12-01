@@ -29,7 +29,7 @@ class SignupPageState extends State<SignupPage> {
           await _auth.createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text)
       ).user;
       if(user != null) {
-        DatabaseManager().userSetup(_emailController.text);
+        DatabaseManager.userSetup(_emailController.text);
         // ignore: use_build_context_synchronously
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => VerifyScreen(email: _emailController.text,)));

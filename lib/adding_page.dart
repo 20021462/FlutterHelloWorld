@@ -30,14 +30,14 @@ class _AddingPageState extends State<AddingPage> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           toolbarHeight: 64,
-          // leading: IconButton(
-          //   icon: const Icon(
-          //     Icons.arrow_back,
-          //     size: 30,
-          //     color: Colors.white,
-          //   ),
-          //   onPressed: () {},
-          // ),
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              size: 30,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          ),
           centerTitle: true,
           title: const Text(
             'Transaction',
@@ -185,9 +185,9 @@ class _AddingPageState extends State<AddingPage> {
                     ),
                     buildButton("Continue", large, colorType1, () {
                       if(groupInput == categoryList[0].id) return;
-                      Transaction newTransaction = Transaction(moneyInput, date, groupInput, descriptionInput);
+                      MomaTransaction newTransaction = MomaTransaction(moneyInput, date, groupInput, descriptionInput);
                       widget.appUser.addTransaction(newTransaction);
-                      widget.appUser.showTransactions();
+                      // widget.appUser.showTransactions();
                       setState(() {
                         moneyInput = 0.0;
                         descriptionInput = '';

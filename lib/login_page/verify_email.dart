@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_world/firebase.dart';
 import 'package:hello_world/main_page.dart';
 import 'package:hello_world/login_page/login_page.dart';
 import '../design_system.dart';
@@ -115,13 +116,14 @@ class VerifyScreenState extends State<VerifyScreen> {
   Future<void> checkEmailVerified() async {
     user = auth.currentUser;
     await user.reload();
+    MomaUser appUser = await DatabaseManager.readUserInfo(widget.email);
     if (user.emailVerified) {
       timer.cancel();
       // ignore: use_build_context_synchronously
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => MainPage(appUser: MomaUser(widget.email))));
+              builder: (context) => MainPage(appUser: appUser)));
       // Navigator.of(context).pushNamed('/main_screen');
     }
   }

@@ -1,10 +1,11 @@
+import 'package:hello_world/firebase.dart';
 import 'package:hello_world/module/transaction.dart';
 
 import 'group_money.dart';
 
 class MomaUser {
   String gmail;
-  List<Transaction> transactions;
+  List<MomaTransaction> transactions;
   // ignore: non_constant_identifier_names
   int MAX_ID = 0;
   double currentMoney = 0;
@@ -13,24 +14,36 @@ class MomaUser {
   String uid = "";
 
   MomaUser(this.gmail) {
-    transactions = <Transaction>[];
+    transactions = <MomaTransaction>[];
   }
 
-  List<Transaction> getTransactionList() {
+  MomaUser.fullProp(this.uid, this.gmail, this.MAX_ID, this.currentMoney, this.totalIncome, this.totalOutcome){
+    transactions = <MomaTransaction>[];
+  }
+
+
+  List<MomaTransaction> getTransactionList() {
     return transactions;
   }
 
-  Transaction removeID(int index) {
+  MomaTransaction removeID(int index) {
     for (int i = 0; i < transactions.length; i++) {
       if (transactions[i].getID() == index) {
+        DatabaseManager.removeTransaction(index);
+        if (categoryList[transactions[i].category].type=="INCOME"){
+          totalIncome -= transactions[i].getMoney();
+          currentMoney-= transactions[i].getMoney();
+        } else {
+          totalOutcome -= transactions[i].getMoney();
+          currentMoney += transactions[i].getMoney();
+        }
         return transactions.removeAt(i);
-        //updateTransaction(transactions, uid);
       }
     }
     return null;
   }
 
-  Transaction findID(int index) {
+  MomaTransaction findID(int index) {
     for (int i = 0; i < transactions.length; i++) {
       if (transactions[i].getID() == index) {
         return transactions[i];
@@ -39,41 +52,44 @@ class MomaUser {
     return null;
   }
 
-  void addTransaction(Transaction newTransaction) {
-    print("add successfully");
-    newTransaction.setID(MAX_ID++);
+  void addTransaction(MomaTransaction newMomaTransaction) {
+    newMomaTransaction.setID(MAX_ID++);
 
-    if (categoryList[newTransaction.getGroupMoney()].type == INCOME) {
-      totalIncome += newTransaction.getMoney();
+    if (categoryList[newMomaTransaction.getGroupMoney()].type == INCOME) {
+      totalIncome += newMomaTransaction.getMoney();
+      currentMoney += newMomaTransaction.getMoney();
     } else {
-      totalOutcome += newTransaction.getMoney();
+      totalOutcome += newMomaTransaction.getMoney();
+      currentMoney -= newMomaTransaction.getMoney();
     }
-    currentMoney = totalIncome-totalOutcome;
+
+    DatabaseManager.addTransaction(newMomaTransaction);
+    DatabaseManager.updateProperty(this);
 
     if (isTransactionEmpty()) {
-      transactions.add(newTransaction);
-      //updateTransaction(transactions, uid);
+      transactions.add(newMomaTransaction);
+      //updateMomaTransaction(transactions, uid);
       return;
     }
 
-    if (transactions[0].after(newTransaction)) {
-      transactions.insert(0, newTransaction);
-      //updateTransaction(transactions, uid);
+    if (transactions[0].after(newMomaTransaction)) {
+      transactions.insert(0, newMomaTransaction);
+      //updateMomaTransaction(transactions, uid);
       return;
     }
 
     int length = transactions.length;
-    if (newTransaction.after(transactions[length - 1])) {
-      transactions.add(newTransaction);
-      //updateTransaction(transactions, uid);
+    if (newMomaTransaction.after(transactions[length - 1])||newMomaTransaction.equal(transactions[length-1])) {
+      transactions.add(newMomaTransaction);
+      //updateMomaTransaction(transactions, uid);
       return;
     }
 
     for (int i = 0; i < length - 1; i++) {
-      if (newTransaction.after(transactions[i]) &&
-          transactions[i + 1].after(newTransaction)) {
-        transactions.insert(i + 1, newTransaction);
-        //updateTransaction(transactions, uid);
+      if (newMomaTransaction.after(transactions[i]) &&
+          transactions[i + 1].after(newMomaTransaction)) {
+        transactions.insert(i + 1, newMomaTransaction);
+        //updateMomaTransaction(transactions, uid);
         return;
       }
     }
@@ -87,9 +103,26 @@ class MomaUser {
     return transactions.isEmpty;
   }
 
+  Map<String,dynamic> toJson() => {
+    'uid': uid,
+    'gmail': gmail,
+    'max transaction id': MAX_ID,
+    'current money': currentMoney,
+    'total income': totalIncome,
+    'total outcome': totalOutcome
+  };
+
+  static MomaUser fromJson(Map<String, dynamic> json) => MomaUser.fullProp(
+      json['uid'],
+      json['gmail'],
+      json['max transaction id'],
+      json['current money'],
+      json['total income'],
+      json['total outcome'],
+  );
+
   void showTransactions() {
-    print("number of transactions:${transactions.length}");
-    for (Transaction i in transactions) {
+    for (MomaTransaction i in transactions) {
       // ignore: avoid_print
       print(i.info());
     }

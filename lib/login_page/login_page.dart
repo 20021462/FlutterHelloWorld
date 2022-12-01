@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_world/firebase.dart';
 import 'package:hello_world/main_page.dart';
 import 'package:hello_world/introduction_page/introduction_pageview.dart';
 import 'package:hello_world/login_page/reset_password.dart';
@@ -32,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
               email: _emailController.text, password: _passwordController.text))
           .user;
       if (user != null) {
-        widget.appUser = MomaUser(_emailController.text);
+        widget.appUser = await DatabaseManager.readUserInfo(_emailController.text);
         setState(() {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
               builder: (context) => MainPage(

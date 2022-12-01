@@ -5,7 +5,7 @@ import '../module/group_money.dart';
 import '../module/transaction.dart';
 
 class TransactionCard extends StatelessWidget {
-  final Transaction transaction;
+  final MomaTransaction transaction;
   const TransactionCard({Key key, this.transaction}) : super(key: key);
 
   @override
@@ -18,7 +18,7 @@ class TransactionCard extends StatelessWidget {
         color: const Color(0xFFFCFCFC),
         borderRadius: BorderRadius.circular(30),
       ),
-      child: Row(
+      child:  Row(
         children: [
           Container(
             height: 70,

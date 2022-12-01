@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/adding_page.dart';
 import 'package:hello_world/budget_page/budget_page.dart';
+import 'package:hello_world/firebase.dart';
 import 'package:hello_world/profile_page/profile_page.dart';
 import 'package:hello_world/transaction_page.dart';
 import 'package:hello_world/home_page.dart';
