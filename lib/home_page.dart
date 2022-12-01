@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/main_page.dart';
 import 'package:intl/intl.dart';
-import 'main_page.dart';
 import 'module/moma_user.dart';
 import 'widget/chart.dart';
 import 'widget/transaction_card.dart';
@@ -49,11 +49,15 @@ class _HomePageState extends State<HomePage> {
                         IconButton(
                             onPressed: () {
                               setState(() {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => MainPage.withCurrentTab(
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        MainPage.withCurrentTab(
                                       appUser: widget.appUser,
                                       currentTab: 4,
-                                    )));
+                                    ),
+                                  ),
+                                );
                               });
                             },
                             icon: Icon(
@@ -229,32 +233,29 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    TextButton(
-                        onPressed: () {
-                          setState(() {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => MainPage.withCurrentTab(
-                                  appUser: widget.appUser,
-                                  currentTab: 1,
-                                )));
-                          });
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).backgroundColor,
-                            borderRadius: BorderRadius.circular(20),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
                           ),
-                          child: Text(
-                            'See All',
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ))
+                        ),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          Theme.of(context).backgroundColor,
+                        ),
+                        elevation: MaterialStateProperty.all<double>(0),
+                      ),
+                      child: Text(
+                        'See All',
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 ...widget.appUser.getTransactionList().map(

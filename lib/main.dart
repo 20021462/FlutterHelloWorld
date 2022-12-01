@@ -1,13 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:hello_world/login_page/login_page.dart';
-import 'package:hello_world/main_page.dart';
-import 'package:intl/intl.dart';
+import 'package:hello_world/introduction_page/introduction_pageview.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:hello_world/transaction_page.dart';
 import 'module/moma_user.dart';
-import 'introduction_page/introduction_pageview.dart';
 // const MaterialColor primaryBlack = MaterialColor(
 //   _blackPrimaryValue,
 //   <int, Color>{
@@ -26,10 +20,6 @@ import 'introduction_page/introduction_pageview.dart';
 // const int _blackPrimaryValue = 0xFF000000;
 
 void main() async {
-  for (int i = 1; i < 13; i++) {
-    monthList.add(
-        DateFormat.MMM().format(DateTime(now.year, i, now.day)).toString());
-  }
   MomaUser appUser = MomaUser("test@gmail.com");
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -55,7 +45,9 @@ class MyApp extends StatelessWidget {
         backgroundColor: const Color(0xFFEEE5FF),
         //primarySwatch: Colors.purple,
       ),
-      home: IntroductionPageView(appUser: appUser,),
+      home: IntroductionPageView(
+        appUser: appUser,
+      ),
       //home: MainScreen(appUser: appUser,),
       //debugShowCheckedModeBanner: false,
       // routes: <String, WidgetBuilder>{

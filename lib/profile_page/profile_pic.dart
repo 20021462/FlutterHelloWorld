@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 // class ProfilePic extends StatefulWidget {
@@ -78,14 +77,13 @@ import 'package:flutter/material.dart';
 //   }
 // }
 
-
 class ProfilePic extends StatelessWidget {
   const ProfilePic({
     Key key,
   }) : super(key: key);
 
-  String checkNull(String text){
-    if(text!= null) return text;
+  String checkNull(String text) {
+    if (text != null) return text;
     return '/email_address/';
   }
 

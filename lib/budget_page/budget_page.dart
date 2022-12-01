@@ -36,17 +36,19 @@ class _BudgetPageState extends State<BudgetPage> {
         padding: const EdgeInsets.only(top: 20),
         child: SizedBox(
           child: FloatingActionButton(
-
-          child: Text("Add", textAlign: TextAlign.center,style: const TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
-          ),),
-          onPressed: () {
-            setState(() {
-
-            });
-          },
-        ),),
+            child: const Text(
+              "Add",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            onPressed: () {
+              setState(() {});
+            },
+          ),
+        ),
       ),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -62,7 +64,9 @@ class _BudgetPageState extends State<BudgetPage> {
             onPressed: () {
               setState(() {
                 pageChanged++;
-                pageController.animateToPage(pageChanged, duration: const Duration(milliseconds: 250),curve: Curves.linear);
+                pageController.animateToPage(pageChanged,
+                    duration: const Duration(milliseconds: 250),
+                    curve: Curves.linear);
               });
             },
           ),
@@ -76,8 +80,9 @@ class _BudgetPageState extends State<BudgetPage> {
               onPressed: () {
                 setState(() {
                   pageChanged--;
-                  pageController.animateToPage(pageChanged, duration: const Duration(milliseconds: 250), curve: Curves.linear);
-
+                  pageController.animateToPage(pageChanged,
+                      duration: const Duration(milliseconds: 250),
+                      curve: Curves.linear);
                 });
               },
             )
@@ -98,11 +103,14 @@ class _BudgetPageState extends State<BudgetPage> {
             // Container(
             //   height: 150,
             // ),
-            SizedBox(height: 150,),
+            const SizedBox(
+              height: 150,
+            ),
             Expanded(
               child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadiusDirectional.vertical(top: Radius.circular(45)),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadiusDirectional.vertical(
+                        top: Radius.circular(45)),
                     color: Colors.white,
                   ),
                   child: PageView.builder(
@@ -110,9 +118,10 @@ class _BudgetPageState extends State<BudgetPage> {
                     controller: pageController,
                     onPageChanged: (index) {
                       setState(() {
-                        pageChanged =index;
-                        pageController.animateToPage(pageChanged, duration: const Duration(milliseconds: 250), curve: Curves.linear);
-
+                        pageChanged = index;
+                        pageController.animateToPage(pageChanged,
+                            duration: const Duration(milliseconds: 250),
+                            curve: Curves.linear);
                       });
                     },
                     itemBuilder: (BuildContext context, int index) {
@@ -131,7 +140,6 @@ class _BudgetPageState extends State<BudgetPage> {
             //   child: buildButton("Create a budget", sizeType2, colorType1,() {},),
             //
             // )
-
           ],
         ),
       ),
