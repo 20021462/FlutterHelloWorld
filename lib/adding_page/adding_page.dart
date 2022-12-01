@@ -234,7 +234,7 @@ class _AddingPageState extends State<AddingPage> {
                         colorType1,
                         () {
                           if (groupInput == categoryList[0].id) return;
-                          Transaction newTransaction = Transaction(
+                          MomaTransaction newTransaction = MomaTransaction(
                             moneyInput,
                             DateFormat("MM-dd-yyyy hh:mm")
                                 .parse(dateInput.text + ' ' + timeInput.text),
@@ -242,7 +242,6 @@ class _AddingPageState extends State<AddingPage> {
                             descriptionInput,
                           );
                           widget.appUser.addTransaction(newTransaction);
-                          widget.appUser.showTransactions();
                           setState(() {
                             moneyInput = 0.0;
                             descriptionInput = '';
