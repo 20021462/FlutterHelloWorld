@@ -97,3 +97,23 @@ Some screens:
 <p>
 - All screen interaction<br/>
 <img src="https://user-images.githubusercontent.com/72114667/201292679-bacfa3d4-3158-4b8a-8584-e5634d2d75e8.gif" height="600">
+</p>
+
+### Week 13:
+<p>
+- Create database in firestore <br/>
+- Connect user account to database <br/>
+- Add property time for transaction <br/>
+- Update/read/remove in firestore<br/>
+
+<table>
+<tr>
+<td><img src="https://user-images.githubusercontent.com/72114667/205233633-d86fbec3-1556-410f-b028-057f8b7ea8b2.png" height="300"></td>
+<td><img src="https://user-images.githubusercontent.com/72114667/205233684-7976f8a5-ec27-4e45-9b8b-498a0f19f586.png" height="300"></td>
+<td><img src="https://user-images.githubusercontent.com/72114667/205233917-a54f828a-4f63-47b5-9a37-cc869f173a82.png" height="300"></td>
+</tr>
+</table>
+
+- Demo database
+<img src="https://user-images.githubusercontent.com/72114667/205235759-fc88d074-7612-4c8b-98c0-53154efd93e7.gif" height="600">
+</p>
